@@ -1,0 +1,38 @@
+/* Theme bases */
+.theme-blue {
+  --primary: #3F5BD9;
+  --primary-600: #4338ca;
+  --accent: linear-gradient(135deg, #c7d2fe, #a78bfa);
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --muted: #475569;
+  --primary-color-theme: #3F5BD9;
+  --primary-color: #2D60FF;
+}
+
+.theme-pink {
+  --primary: #F74780;
+  --primary-600: #be185d;
+  --accent: linear-gradient(135deg, #fecdd3, #f472b6);
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --muted: #6b7280;
+}
+
+.theme-orange {
+  --primary: #F39A36;
+  --primary-600: #ea580c;
+  --accent: linear-gradient(135deg, #ffd8a8, #fb923c);
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --muted: #6b5136;
+
+}
+
+:root {
+ --white: #fff;
+ --black: #000;
+ --gray-24:#6E6E6E;
+ --black-74:rgba(0, 0, 0, 0.74);
+ --gray-blue:#9AA4B2;
+ --gray-color-section:#ECF0FF;
+ --Light-Dark-Gunmetal: #1e2327cf;
+   --white-color: #fff;
+}
