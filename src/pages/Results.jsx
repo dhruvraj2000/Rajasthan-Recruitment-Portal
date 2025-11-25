@@ -24,7 +24,7 @@ const Result = () => {
     <>
       <HeadingBar title="Get Result" />
       <PagePartition
-        items={[{ title: "Home", to: "/" }, { title: "Get Result" }]}
+        items={[{ title: "Home", to: "/" }, { title: <span style={{fontWeight: 700}}> Get Result </span> }]}
       />
       <div className="form-format">
         <Form form={form} layout="vertical" className="form-style">
