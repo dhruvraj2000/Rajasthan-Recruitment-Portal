@@ -23,7 +23,7 @@ const Ssoid = () => {
     <>
       <HeadingBar title="Get SSO ID" />
       <PagePartition
-        items={[{ title: "Home", to: "/" }, { title: "Get SSO ID" }]}
+        items={[{ title: "Home", to: "/" }, { title: <span style={{fontWeight: 700}}>Get SSO ID </span> }]}
       />
 
       <div className="form-format">

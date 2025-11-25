@@ -14,7 +14,7 @@ const LeftMenu = ({ mode }) => {
     },
     {
       key: "admitcard",
-      label: <Link to="/admit-card">Admit Card</Link>,
+      label: <Link to="/Admitcard">Admit Card</Link>,
     },
     {
       key: "result",
