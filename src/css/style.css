@@ -168,7 +168,7 @@ button:hover {
 .main-content {
     margin: 24px ;
     flex: 1;
-    
+
 }
 
 .stats-grid {
@@ -941,9 +941,14 @@ padding: 4px;
 
 .cancel-btn {
   font-size: 16px;
-  height: 3vh;
-  padding: 20px !important;
+
+padding: 20px !important;
   font-weight: 600;
+
+
+    border-radius: 12px;
+
+
 }
 
 .common-input {
@@ -954,13 +959,11 @@ padding: 4px;
 /* Form Layout */
 .form-format {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
 }
 
 .form-style {
-  width: 35vw;
+
   background: #ffffff;
   padding: 30px 40px;
   border-radius: 10px;
@@ -979,10 +982,7 @@ padding: 4px;
   margin-left: 10px;
 }
 
-input#dob {
-  height: 38px;
-  width: 48vh;
-}
+
 
 /* Page Background */
 body {
@@ -990,18 +990,14 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* Container */
-.container {
-  margin: 40px auto;
-  max-width: 90vw;
-}
+
 
 /* Cards */
 .cards {
   display: flex;
-  gap: 22px;
+  gap: 12px;
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: center; */
   margin-top: 20px;
 }
 
@@ -1010,9 +1006,9 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  width: 10vw;
+  min-width: 250px;
   background: white;
-  padding: 10px;
+  padding: 25px;
   border-radius: 14px;
   cursor: pointer;
   transition: 0.2s ease-in-out;
@@ -1025,16 +1021,21 @@ body {
 }
 
 .card-title {
-  font-size: 15px;
-  font-weight: 400;
-  color: #3b4ce2;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary)
 }
 
 .card-desc {
   font-size: 14px;
-  color: #555;
+  color: var(--gray-24);
   margin: 0;
   text-align: center;
+}
+.faq-section h2{
+    color: var(--primary);
+    font-size: 26px;
+
 }
 
 .card-icon {
@@ -1059,10 +1060,10 @@ body {
 
 /* Header */
 .headerbackground {
-  background: linear-gradient(135deg, #3b4ce2, #1a1f3c);
+  /* background: linear-gradient(135deg, #3b4ce2, #1a1f3c); */
   color: white;
   text-align: center;
-  height: 30vh;
+
 }
 
 /* Search Bar */
@@ -1088,7 +1089,7 @@ body {
   background: transparent;
   width: 100%;
   font-size: 16px;
-   color: #000 !important;  
+   color: #000 !important;
 }
 
 
@@ -1104,15 +1105,15 @@ body {
 
 .faq-item {
   border: 1px solid #e1e1e1;
-  padding: 15px 0;
+  padding: 8px 0;
   margin-bottom: 15px;
   border-radius: 10px;
 }
 
 .faq-question {
   cursor: pointer;
-  padding: 15px;
-  background: #f4f6ff;
+  padding: 8px;
+  /* background: #f4f6ff; */
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -1139,28 +1140,11 @@ font-size: 0.9rem;
 }
 
 /* Dropdown Custom Box */
-.custom-dropdown-box {
-  width: 26vw;
-  height: 45px;
-  padding: 8px 12px;
-  border: 1px solid #d9d9d9 !important;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: 0.2s;
-  background: #fff;
-}
 
-.custom-dropdown-box:hover {
-  border-color: #4096ff !important;
-}
 
-.custom-dropdown-box:focus-within {
-  border-color: #4096ff !important;
-  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
-}
+
+
+
 
 /* Button Group */
 .ssoid-btn-group,
@@ -1190,13 +1174,14 @@ font-size: 0.9rem;
     text-align: -webkit-right;
 }
 .captcha-wrapper {
-  width: 15vw;
+    display: flex;
+    flex-wrap: wrap;
   background: #fff;
-  padding: 15px;
+  /* padding: 15px; */
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  display: flex;
-  flex-direction: column;
+
+
+
   gap: 12px;
 }
 
@@ -1266,18 +1251,18 @@ font-size: 0.9rem;
 
 /*edit by gaurang*/
  .admitcard-container  {
-        max-width: 1100px;
+        /* max-width: 1100px; */
         width: 100%;
         margin: 0 auto;
-        padding: 20px;
-        
+
+
     }
 
 
 /*edit by gaurang*/
 .table-box {
-  max-width: 1100px;    
-  margin: 0 auto;         
+  /* max-width: 1100px; */
+  margin: 0 auto;
   background: #ffffff;
   padding: 20px;
   border-radius: 12px;
@@ -1302,11 +1287,13 @@ font-size: 0.9rem;
 /*edit by gaurang*/
 @media (max-width: 768px) {
     .search-input {
-        width: 100% !important;     
+        width: 100% !important;
     }
 }
-
-/*edit by gaurang*/ 
+.ant-table-cell{
+    padding: 9px 7px!important;
+}
+/*edit by gaurang*/
 @media (max-width: 480px) {
     .search-input {
         width: 95% !important;
@@ -1315,11 +1302,8 @@ font-size: 0.9rem;
     }
 }
 
-/*edit by gaurang*/
-.my-admit-btn,
-.my-center-btn {
-  font-weight: 800 !important;
-  margin: 3px;
+.ant-table-cell .header-actions button{
+    margin-right: 10px;
 }
 /*edit by gaurang*/
 .bold-text{
@@ -1341,7 +1325,7 @@ font-size: 0.9rem;
 }
 /*edit by gaurang*/
 .ant-table-thead > tr > th {
-  background-color: #8e93fcad !important;   
+  background-color: #8e93fcad !important;
 }
 
 /*edit by gaurang*/
@@ -1366,9 +1350,9 @@ font-size: 0.9rem;
 }
 /*edit by gaurang*/
 .topbar{
-    background-color: #3f5bd9;
+    background-color: var(--primary);
     padding:  8px;
-  
+
 }
 /*edit by gaurang*/
 .HeadName{
@@ -1385,33 +1369,55 @@ font-size: 0.9rem;
 .me-3{
     color: white;
      margin: 4px 7px 0;
-   
-}
-/*edit by gaurang*/
 
-.theme-blue .topbar {
-  background-color: #4169e1 !important;
-}
-/*edit by gaurang*/
-
-.theme-pink .topbar {
-  background-color: #ff4d94 !important;
 }
 
-/*edit by gaurang*/
-.theme-orange .topbar {
-  background-color: #ff8c00 !important;
+.ant-menu-item-selected .ant-menu-title-content{
+    background: var(--white-color)!important;
+    padding: 8PX;
+    border-radius: 8px;
+
+}
+.ant-menu-item-selected .ant-menu-title-content A{
+    color:var(--primary)!important;
+    font-weight: 600 !important;
+
+
 }
 
-/*edit by gaurang*/
-.theme-btn.blue {
-  background: #4169e1;
+.section-heading {
+  margin-bottom: 20px;
 }
-/*edit by gaurang*/
-.theme-btn.pink {
-  background: #ff4d94;
+
+.section-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 6px;
+  text-align: left;
 }
-/*edit by gaurang*/
-.theme-btn.orange {
-  background: #ff8c00;
+
+.section-underline {
+  width: 120px;
+  height: 3px;
+  background-color: var(--primary);
+  border-radius: 6px;
+}
+.ant-breadcrumb {
+    padding-bottom:12px ;
+}
+
+.faq-top-header h1{
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--white);
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.faq-top-header{
+background:var(--primary);
+border-radius: 12px;
+padding: 30px;
+margin-bottom: 20px;
+
 }

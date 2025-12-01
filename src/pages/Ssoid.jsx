@@ -2,7 +2,7 @@ import { Input, Form, message } from "antd";
 import CustomDatePicker from "../components/Calender";
 import { SoundOutlined, RedoOutlined } from "@ant-design/icons";
 import CustomButton from "../components/Button";
-import React from "react";
+
 import CustomInput from "../components/Input";
 import PagePartition from "../components/Breadcrumb";
 import CaptchaBox from "../components/CaptchaBox";
