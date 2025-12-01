@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import CustomButton from "./Button";
+import CustomInput from "./Input";
 
 const generateCaptchaText = () => {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -84,12 +85,10 @@ const CaptchaBox = ({ length = 6, onVerify }) => {
         </button>
       </div>
 
-      <input
-        className="captcha-input"
-        placeholder="Enter captcha"
+      <CustomInput  className="captcha-input"   placeholder="Enter captcha"
         value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
+        onChange={(e) => setInput(e.target.value)}/>
+
     </div>
   );
 };

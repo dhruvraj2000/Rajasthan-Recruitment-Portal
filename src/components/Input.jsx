@@ -2,18 +2,21 @@ import React from "react";
 import { Input as AntInput } from "antd";
 
 const defaultStyle = {
-  height: "45px",
-  width: "85%", 
+  height: "40px",
+
 };
 
-const CustomInput = ({ prefix, placeholder, size = "large", className ,id }) => {
+const CustomInput = ({ prefix, placeholder, size = "large", className ,id,onChange,allowClear }) => {
   return (
     <AntInput
       size={size}
       placeholder={placeholder}
       prefix={prefix}
       className={className}
-      style={{ ...defaultStyle}}
+      style={ { ...defaultStyle } }
+      onChange={ onChange }
+      allowClear={allowClear}
+
       id={id}
     />
   );

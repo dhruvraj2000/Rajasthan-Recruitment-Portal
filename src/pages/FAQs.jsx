@@ -16,6 +16,7 @@ import eOtrPic3 from "../assets/Svg/eOtrPic3.png";
 import eOtrPic4 from "../assets/Svg/eOtrPic4.png";
 import pOtrPic1 from "../assets/Svg/pOtrPic1.png";
 import CET_ques2 from "../assets/Svg/CET_ques2.png";
+import languageicon from "../assets/Svg/language.svg";
 
 const Frequentlyquestions = () => {
   const [activeSection, setActiveSection] = useState("general");
@@ -493,27 +494,18 @@ const Frequentlyquestions = () => {
 
   return (
     <div className="faq-container">
-      <div className="header-actions">
-        <div className="headerbackground header-login-btn">
-          <div
-            style={{ textAlign: "right", padding: "20px", marginRight: "2vw" }}
-          >
-            <CustomButton
-              type="primary"
-              buttontext="English"
-              onClick={() => setLanguage("en")}
-              style={{ marginRight: "10px" }}
-              id="Elangauge"
-              classname="language-changed header-login-btn"
-            />
-            <CustomButton
-              type="primary"
-              buttontext="हिन्दी"
-              onClick={() => setLanguage("hi")}
-              id="Hlangauge"
-              classname="language-changed header-login-btn"
-            />
+         <div
+            style={{ textAlign: "right"}}
+      >
+      <a onClick={() => setLanguage(language === "en" ? "hi" : "en")}>
+  <img src={languageicon} alt="language icon" className="language-icon" />
+</a>
+
           </div>
+      <div className="header-actions">
+
+        <div className="headerbackground faq-top-header">
+
 
           <h1>
             {language === "en"
@@ -552,7 +544,7 @@ const Frequentlyquestions = () => {
         />
 
         <div className="faq-section">
-          <h2 style={{ color: "#3b4ce2" }}>
+          <h2 >
             {sectionHeadings[activeSection]?.[language] || ""}
           </h2>
             {faqData[activeSection]
@@ -561,7 +553,7 @@ const Frequentlyquestions = () => {
                 const a =
                   typeof item.a[language] === "string"
                     ? item.a[language].toLowerCase()
-                    : ""; 
+                    : "";
                 return q.includes(searchTerm) || a.includes(searchTerm);
               })
               ?.map((item, index) => (

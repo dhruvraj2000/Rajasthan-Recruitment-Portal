@@ -1,23 +1,19 @@
 import React from "react";
-import { Dropdown, Space } from "antd";
-import { DownOutlined } from "@ant-design/icons";
 
-const CustomDropdown = ({ items, value, onSelect, placeholder }) => {
+
+import { Select } from 'antd';
+
+
+const CustomDropdown = ({ defaultValue, onchange, options }) => {
   return (
-    <Dropdown
-      trigger={["click"]}
-      menu={{
-        items,
-        onClick: ({ key }) => onSelect(key),
-      }}
-    >
-      <div className="custom-dropdown-box">
-        <Space style={{ fontSize: 15 }}>
-          {value || placeholder}
-        </Space>
-        <DownOutlined />
-      </div>
-    </Dropdown>
+    <Select
+
+      style={{height:'40px'}}
+      defaultValue={ defaultValue }
+      placeholder="Select an option"
+      onChange={onchange}
+      options={options}
+    />
   );
 };
 
