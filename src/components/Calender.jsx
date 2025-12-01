@@ -5,9 +5,9 @@ import dayjs from "dayjs";
 const CustomDatePicker = () => {
   return (
     <div className="date-container">
-      <label htmlFor="dob" className="form-label"></label>
-      <br />
+
       <DatePicker
+        style={{height:'40px',width:'100%'}}
         id="dob"
         className="custom-datepicker"
         placeholder="Select date of birth"
