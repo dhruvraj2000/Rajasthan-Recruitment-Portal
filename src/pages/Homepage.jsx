@@ -14,7 +14,7 @@ const HomePage = () => {
   const [theme, setTheme] = useState("theme-blue");
 
   const settings = {
-    arrows: true,
+    arrows: false,
 
     infinite: false,
     speed: 500,
