@@ -42,8 +42,12 @@ export const SkeletonButton = ({ width = 150, active = true }) => (
    📝 Input Skeleton
 ------------------------------ */
 export const SkeletonInput = ({ active = true, width = "100%" }) => (
-  <Skeleton.Input active={active} style={{ width }} />
+  <Skeleton.Input 
+    active={active} 
+    style={{ width, display: "block" }} 
+  />
 );
+
 
 /* -----------------------------
    💬 Text Line Skeleton (THICK)
@@ -79,4 +83,6 @@ export const SkeletonIcon = ({ active = true }) => (
   <Skeleton.Node active={active}>
     <BarChartOutlined style={{ fontSize: 24 }} />
   </Skeleton.Node>
+
+
 );
