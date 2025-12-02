@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import CardsList from "../components/CardsList";
 import CustomButton from "../components/Button";
-
 import loginIcon from "../assets/Svg/log-in.png";
 import examResults from "../assets/Svg/exam-results.png";
 import examIcon from "../assets/Svg/exam.png";
@@ -16,18 +15,12 @@ import eOtrPic3 from "../assets/Svg/eOtrPic3.png";
 import eOtrPic4 from "../assets/Svg/eOtrPic4.png";
 import pOtrPic1 from "../assets/Svg/pOtrPic1.png";
 import CET_ques2 from "../assets/Svg/CET_ques2.png";
-import languageicon from "../assets/Svg/language.svg";
+import FAQCollapse from "../components/FAQCollapse";
 
 const Frequentlyquestions = () => {
   const [activeSection, setActiveSection] = useState("general");
-  const [activeQuestion, setActiveQuestion] = useState(null);
   const [language, setLanguage] = useState("en");
   const [searchTerm, setSearchTerm] = useState("");
-
-
-  const toggleQuestion = (index) => {
-    setActiveQuestion(activeQuestion === index ? null : index);
-  };
 
   const sectionHeadings = {
     general: {
@@ -68,7 +61,7 @@ const Frequentlyquestions = () => {
     general: [
       {
         q: {
-          en: "What is the reason of message during OTR creation/KYC?",
+          en: "What is the reason of below mentioned message is showing during the OTR creation/KYC process?",
           hi: "ओटीआर निर्माण/केवाईसी प्रक्रिया के दौरान नीचे उल्लिखित संदेश दिखाई देने का क्या कारण है?",
         },
         a: {
@@ -451,7 +444,7 @@ const Frequentlyquestions = () => {
     {
       id: "billing",
       title: { en: "Exam Application", hi: "परीक्षा आवेदन" },
-      desc: { en: "Exam Application details", hi: "परीक्षा आवेदन विवरण" },
+      desc: { en: "Exam Application details", hi: "परीक्षा विवरण" },
       img: examResults,
     },
     {
@@ -469,13 +462,13 @@ const Frequentlyquestions = () => {
     {
       id: "cet",
       title: { en: "Objection", hi: "आपत्ति" },
-      desc: { en: "Submit Objection", hi: "आपत्ति जमा करें" },
+      desc: { en: "Submit Objection", hi: "आपत्ति दर्ज करें" },
       img: userIcon,
     },
     {
       id: "result",
       title: { en: "Result", hi: "परिणाम" },
-      desc: { en: "Check your result", hi: "अपने परिणाम देखें" },
+      desc: { en: "Check your result", hi: "परिणाम देखें" },
       img: medicalResult,
     },
     {
@@ -494,18 +487,25 @@ const Frequentlyquestions = () => {
 
   return (
     <div className="faq-container">
-         <div
-            style={{ textAlign: "right"}}
-      >
-      {/* <a onClick={() => setLanguage(language === "en" ? "hi" : "en")}>
-  <img src={languageicon} alt="language icon" className="language-icon" />
-</a> */}
-
-          </div>
       <div className="header-actions">
+        <div className="headerbackground header-login-btn">
+          <div
+            style={{ textAlign: "right", padding: "20px", marginRight: "2vw" }}
+          >
+            <CustomButton
+              type="primary"
+              buttontext="English"
+              onClick={() => setLanguage("en")}
+              classname="language-changed header-login-btn"
+            />
 
-        <div className="headerbackground faq-top-header">
-
+            <CustomButton
+              type="primary"
+              buttontext="हिन्दी"
+              onClick={() => setLanguage("hi")}
+              classname="language-changed header-login-btn"
+            />
+          </div>
 
           <h1>
             {language === "en"
@@ -521,11 +521,14 @@ const Frequentlyquestions = () => {
           <div className="search-container">
             <div className="search-box">
               <i className="fa-solid fa-magnifying-glass"></i>
-            <input
-              placeholder={language === "en" ? "Search questions..." : "प्रश्न खोजें..."}
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
-            />
+
+              <input
+                placeholder={
+                  language === "en" ? "Search questions..." : "प्रश्न खोजें..."
+                }
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
+              />
             </div>
           </div>
         </div>
@@ -535,50 +538,20 @@ const Frequentlyquestions = () => {
         <CardsList
           cards={cards}
           activeSection={activeSection}
-          setActiveSection={(section) => {
-            setActiveSection(section);
-            setActiveQuestion(null);
-          }}
-          setActiveQuestion={setActiveQuestion}
+          setActiveSection={(section) => setActiveSection(section)}
           language={language}
         />
 
         <div className="faq-section">
-          <h2 >
-            {sectionHeadings[activeSection]?.[language] || ""}
+          <h2 style={{ color: "#3b4ce2" }}>
+            {sectionHeadings[activeSection]?.[language]}
           </h2>
-            {faqData[activeSection]
-              ?.filter((item) => {
-                const q = item.q[language]?.toLowerCase() || "";
-                const a =
-                  typeof item.a[language] === "string"
-                    ? item.a[language].toLowerCase()
-                    : "";
-                return q.includes(searchTerm) || a.includes(searchTerm);
-              })
-              ?.map((item, index) => (
-                <div
-                  className={`faq-item ${activeQuestion === index ? "active" : ""}`}
-                  key={index}
-                >
-                  <div className="faq-question" onClick={() => toggleQuestion(index)}>
-                    <span>{item.q[language]}</span>
-                    <span className="arrow">
-                      {activeQuestion === index ? "▲" : "▼"}
-                    </span>
-                  </div>
 
-                  {activeQuestion === index && (
-                    <div
-                      className="faq-answer"
-                      style={{ display: "block", padding: "10px", background: "#fff" }}
-                    >
-                      {item.a[language]}
-                    </div>
-                  )}
-                </div>
-              ))}
-
+          <FAQCollapse
+            data={faqData[activeSection]}
+            language={language}
+            searchTerm={searchTerm}
+          />
         </div>
       </div>
     </div>

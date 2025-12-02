@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, Row } from "antd";
 import { motion } from "framer-motion";
 import { Users, FileCheck, Briefcase, ArrowRight, Bell } from "lucide-react";
@@ -9,43 +9,47 @@ import CustomButton from "../components/Button";
 import CustomTabs from "../components/Tabs";
 import Slider from "react-slick";
 
+import {
+  SkeletonButton,
+  SkeletonCard,
+  SkeletonCircle,
+  SkeletonImg,
+  SkeletonInput,
+  SkeletonLine,
+  SkeletonSquare,
+} from "../components/SkeletonComponent";
 
 const HomePage = () => {
   const [theme, setTheme] = useState("theme-blue");
 
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   const settings = {
     arrows: true,
-
     infinite: false,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 1, // scroll one by one for smooth loop
     initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
       },
       {
         breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
+        settings: { slidesToShow: 2, slidesToScroll: 2, initialSlide: 2 },
       },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
     ],
   };
 
@@ -86,25 +90,43 @@ const HomePage = () => {
       sub: "Issuance of Appointment Order and Joining and Assignment to Post",
     },
   ];
+
   const jobs = [
-    { icon: <img src="1.png" />, jobs: "Jamadar Grade II 2024,", sub: "RPSC" , date:"12-Dec-2024" },
+    {
+      icon: <img src="1.png" />,
+      jobs: "Jamadar Grade II 2024,",
+      sub: "RPSC",
+      date: "12-Dec-2024",
+    },
     {
       icon: <img src="2.png" />,
       jobs: "Statistical Officer 2025",
       sub: "RSSB",
-     date:"12-Dec-2024"
+      date: "12-Dec-2024",
     },
-    { icon: <img src="2.png" />, jobs: "Primary Teacher 2025", sub: "RPSC", date:"12-Dec-2024" },
+    {
+      icon: <img src="2.png" />,
+      jobs: "Primary Teacher 2025",
+      sub: "RPSC",
+      date: "12-Dec-2024",
+    },
   ];
 
   const stakeholders = [
-
-    {icon: <img src="1.png" />,name:"ICFRE-Arid Forest Research Institute"},
-    {icon: <img src="2.png" />,name:"National Health Mission, Rajasthan"},
-    {icon: <img src="3.png" />,name:"Department of Sanskrit Education, Govt. of Rajasthan"},
-    {icon: <img src="4.png" />,name:"Directorate Police Telecommunication, Rajasthan"},
-    {icon: <img src="1.png" />,name:"Rajasthan State Pollution Control Board"},
-
+    { icon: <img src="1.png" />, name: "ICFRE-Arid Forest Research Institute" },
+    { icon: <img src="2.png" />, name: "National Health Mission, Rajasthan" },
+    {
+      icon: <img src="3.png" />,
+      name: "Department of Sanskrit Education, Govt. of Rajasthan",
+    },
+    {
+      icon: <img src="4.png" />,
+      name: "Directorate Police Telecommunication, Rajasthan",
+    },
+    {
+      icon: <img src="1.png" />,
+      name: "Rajasthan State Pollution Control Board",
+    },
   ];
 
   const departmentStats = [
@@ -146,199 +168,274 @@ const HomePage = () => {
 
   return (
     <div className={`app-wrapper ${theme}`}>
-
-{/* <Navbar/> */}
-      {/* Main Content */}
-      <div >
-        {/* Stats Section */}
+      <div>
         <section className="stats-grid">
-          <AnimatedStat
-            title="One Time Registration"
-            value="56,90,391"
-            icon={<Users />}
-          />
-          <AnimatedStat
-            title="Recruitments Published"
-            value="268"
-            icon={<FileCheck />}
-          />
-          <AnimatedStat
-            title="Employment Created"
-            value="5,73,868"
-            icon={<Briefcase />}
-          />
-          <AnimatedStat
-            title="Applications Submitted"
-            value="4,80,33,432"
-            icon={<FileCheck />}
-          />
+          {loading ? (
+            <>
+              <div className="stat-skeleton-card">
+                <SkeletonCard />
+              </div>
+              <div className="stat-skeleton-card">
+                <SkeletonCard />
+              </div>
+              <div className="stat-skeleton-card">
+                <SkeletonCard />
+              </div>
+              <div className="stat-skeleton-card">
+                <SkeletonCard />
+              </div>
+            </>
+          ) : (
+            <>
+              <AnimatedStat
+                title="One Time Registration"
+                value="56,90,391"
+                icon={<Users />}
+              />
+              <AnimatedStat
+                title="Recruitments Published"
+                value="268"
+                icon={<FileCheck />}
+              />
+              <AnimatedStat
+                title="Employment Created"
+                value="5,73,868"
+                icon={<Briefcase />}
+              />
+              <AnimatedStat
+                title="Applications Submitted"
+                value="4,80,33,432"
+                icon={<FileCheck />}
+              />
+            </>
+          )}
         </section>
 
-        {/* Info + Notice Section */}
         <section className="two-cols">
           <Card className="info-card">
-            <h3 className="info-title">
-              Your Gateway to Government Jobs in Rajasthan
-            </h3>
+            {loading ? (
+              <>
+                <SkeletonLine width="50%" />
+                <SkeletonCard />
+                <SkeletonButton width={200} />
+              </>
+            ) : (
+              <>
+                <h3 className="info-title">
+                  Your Gateway to Government Jobs in Rajasthan
+                </h3>
 
-            <p className="info-desc">
-              Rajasthan Recruitment Portal is a unified portal for various
-              recruitments in the state of Rajasthan.
-            </p>
+                <p className="info-desc">
+                  Rajasthan Recruitment Portal is a unified portal for various
+                  recruitments in the state of Rajasthan.
+                </p>
 
-            <ul className="blue-pulse-list">
-              <li>
-                One-time registration system for candidates through single
-                sign-on
-              </li>
-              <li>Integration with Aadhaar, Jan-Aadhar and Employee ID</li>
-              <li>
-                Informational coordination from advertisement to application
-              </li>
-              <li>
-                Coordination between departments and recruitment institutes
-              </li>
-              <li>
-                Updates via dashboard, email, SMS, WhatsApp & social media
-              </li>
-              <li>
-                DigiLocker & e-Vault integration for document authentication
-              </li>
-              <li>Analytical presentation of information and achievements</li>
-            </ul>
+                <ul className="blue-pulse-list">
+                  <li>
+                    One-time registration system for candidates through single
+                    sign-on
+                  </li>
+                  <li>Integration with Aadhaar, Jan-Aadhar and Employee ID</li>
+                  <li>
+                    Informational coordination from advertisement to application
+                  </li>
+                  <li>
+                    Coordination between departments and recruitment institutes
+                  </li>
+                  <li>
+                    Updates via dashboard, email, SMS, WhatsApp & social media
+                  </li>
+                  <li>
+                    DigiLocker & e-Vault integration for document authentication
+                  </li>
+                  <li>
+                    Analytical presentation of information and achievements
+                  </li>
+                </ul>
 
-            <div className="text-center start-one-time-btn">
-              <CustomButton
-                type="primary"
-                buttontext="Start One Time Registration"
-                classname="primary-btn"
-              />
-            </div>
+                <div className="text-center start-one-time-btn">
+                  <CustomButton
+                    type="primary"
+                    buttontext="Start One Time Registration"
+                    classname="primary-btn"
+                  />
+                </div>
+              </>
+            )}
           </Card>
 
           <Card className="notice-card">
-            <h3 className="notice-title">
-              <Bell className="notice-icon" /> Notice Board
-            </h3>
-            <CustomTabs defaultActiveKey="1" items={noticeTabs} />
+            {loading ? (
+              <>
+                <SkeletonLine width="50%" />
+                <SkeletonCard />
+              </>
+            ) : (
+              <>
+                <h3 className="notice-title">
+                  <Bell className="notice-icon" /> Notice Board
+                </h3>
+                <CustomTabs defaultActiveKey="1" items={noticeTabs} />
+              </>
+            )}
           </Card>
         </section>
+
         <section className="section-block">
           <Sectionlabel
             labeltext="Stages of the"
             sublabeltext="Examination Life Cycle"
           />
-          {/* Steps Section */}
-          <div className="steps-grid">
-            {stepsData.map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-              >
-                <Card className="step-card">
-                  <div className="step-number">
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <div className="step-text">STEP</div>
-                </Card>
 
-                <div className="step-description">
-                  <p className="step-description-heading">{step.heading}</p>
-                  <p className="step-description-subheading">{step.sub}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="steps-grid">
+            {loading
+              ? [...Array(14)].map((_, i) => (
+                  <Card className="step-card" key={i}>
+                    <SkeletonLine width="40%" />
+                    <SkeletonLine width="60%" />
+                  </Card>
+                ))
+              : stepsData.map((step, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  >
+                    <Card className="step-card">
+                      <div className="step-number">
+                        {String(i + 1).padStart(2, "0")}
+                      </div>
+                      <div className="step-text">STEP</div>
+                    </Card>
+
+                    <div className="step-description">
+                      <p className="step-description-heading">{step.heading}</p>
+                      <p className="step-description-subheading">{step.sub}</p>
+                    </div>
+                  </motion.div>
+                ))}
           </div>
         </section>
-        {/* Department Wise Applications */}
+
         <section className="section-block ">
           <Sectionlabel
             labeltext="Department Wise"
             sublabeltext="Submitted Application"
           />
+
           <div className="dept-grid">
-            {departmentStats.map((d, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-              >
-                <Card className="dept-card">
-                  <div className="dept-card-inner">
-                    <div className="dept-icon">{d.icon}</div>
-                    <div className="dept-title">{d.dept}</div>
-                  </div>
-                  <div className="dept-count">
-                    <label>{d.count}</label> Applications
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
+            {loading
+              ? [...Array(4)].map((_, i) => (
+                  <Card className="dept-card" key={i}>
+                    <SkeletonCircle size={50} />
+                    <SkeletonLine width="70%" />
+                    <SkeletonLine width="50%" />
+                  </Card>
+                ))
+              : departmentStats.map((d, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  >
+                    <Card className="dept-card">
+                      <div className="dept-card-inner">
+                        <div className="dept-icon">{d.icon}</div>
+                        <div className="dept-title">{d.dept}</div>
+                      </div>
+                      <div className="dept-count">
+                        <label>{d.count}</label> Applications
+                      </div>
+                    </Card>
+                  </motion.div>
+                ))}
           </div>
         </section>
 
-        {/* Jobs Section */}
         <section className="section-block">
-          <h2 className="section-title"> </h2>
           <Sectionlabel labeltext="Job" sublabeltext="Openings" />
-          <div className="job-list">
-            {jobs.map((job, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-              >
-                <Card className="job-card">
-                  <div className="job-card-inner">
-                    <div className="job-title-img">{job.icon}</div>
-                    <div className="job-title">
-                      <p> {job.jobs}</p>
-                      <label>{job.sub}</label>
-                    </div>
-                    <CustomButton
-                      type="default"
 
-                      buttontext="Apply"
-                      classname="outline-btn"
-                       icons={<ArrowRight />}
-                    />
-                  </div>
-                  <div className="last-reg-date">
-                    <label>{job.date}</label>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="job-list">
+            {loading
+              ? [...Array(3)].map((_, i) => (
+                  <Card className="job-card" key={i}>
+                    <div className="job-card-inner">
+                      {/* LEFT CIRCLE SKELETON */}
+                      <SkeletonCircle size={50} />
+
+                      {/* TITLE + SUBTITLE */}
+                      <div className="job-title" style={{ flex: 1 }}>
+                        <SkeletonLine width="60%" />
+                        <SkeletonLine width="40%" />
+                      </div>
+
+                      {/* APPLY BUTTON */}
+                      <SkeletonButton width={110} />
+                    </div>
+                  </Card>
+                ))
+              : jobs.map((job, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  >
+                    <Card className="job-card">
+                      <div className="job-card-inner">
+                        <div className="job-title-img">{job.icon}</div>
+
+                        <div className="job-title">
+                          <p>{job.jobs}</p>
+                          <label>{job.sub}</label>
+                        </div>
+
+                        <CustomButton
+                          type="default"
+                          buttontext="Apply"
+                          classname="outline-btn"
+                          icons={<ArrowRight />}
+                        />
+                      </div>
+
+                      <div className="last-reg-date">
+                        <label>{job.date}</label>
+                      </div>
+                    </Card>
+                  </motion.div>
+                ))}
           </div>
         </section>
 
-        {/* Stakeholders */}
         <section className="section-block">
           <Sectionlabel labeltext="Official" sublabeltext="Stakeholders" />
 
           <Slider {...settings} className="stakeholder-slider">
-            {stakeholders.map((s, i) => (
-              <motion.div
-                className="Stakeholders-div"
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-              >
-                <Card className="stake-card">
-                  <div className="stake-card-inner">
-                    <div>{s.icon}</div>
-                  <p>{ s.name }
-</p>                    </div>
-
-                </Card>
-              </motion.div>
-            ))}
+            {loading
+              ? [...Array(4)].map((_, i) => (
+                  <Card className="stake-card" key={i}>
+                    {/* Circle skeleton instead of image */}
+                    <SkeletonCircle size={50} />
+                    <SkeletonLine width="80%" />
+                  </Card>
+                ))
+              : stakeholders.map((s, i) => (
+                  <motion.div
+                    className="Stakeholders-div"
+                    key={i}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  >
+                    <Card className="stake-card">
+                      <div className="stake-card-inner">
+                        <div>{s.icon}</div>
+                        <p>{s.name}</p>
+                      </div>
+                    </Card>
+                  </motion.div>
+                ))}
           </Slider>
         </section>
       </div>
-
-
     </div>
   );
 };
