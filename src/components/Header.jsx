@@ -1,8 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Logo from "../assets/Svg/Logo.svg";
 import CustomButton from "./Button";
+import languageicon from "../assets/Svg/language.svg"
+import Language from '../data/Language';
 
-const Header=() =>{
+
+
+
+
+const Header=({ currentLang, setCurrentLang }) =>{
+ 
+
   return (
     <header className="header-container">
         <div className="header-inner">
@@ -11,9 +19,13 @@ const Header=() =>{
           </div>
 
           <div className="header-actions">
+
+             <a onClick={() => setCurrentLang(currentLang === "en" ? "hi" : "en")}>
+              <img src={languageicon} alt="language icon" className="language-icon"/>
+            </a>
             <CustomButton
               type="primary"
-              buttontext="Login"
+                buttontext={Language[currentLang].login}
               classname="header-login-btn"
             />
           </div>

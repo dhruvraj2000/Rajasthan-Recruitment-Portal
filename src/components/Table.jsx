@@ -1,12 +1,16 @@
 import React from 'react';
 import { Table, Space, } from 'antd';
 import Button from "../components/Button";
+import Language from '../data/Language';
 
-
+const TableComponent = ({ searchText, currentLang }) => {
 
 const columns = [
   {
-    title: <span  className="header-light-blue" style={{ fontWeight: "700", fontSize: "18px" }}>Admit Card</span>,
+    title:( <span  className="header-light-blue" style={{ fontWeight: "700", fontSize: "18px" }}>
+       {Language[currentLang]?.admitcard || "Admit Card"}
+    </span>
+    ),
     dataIndex: 'admitcard',
     key: 'admitcard',
 
@@ -41,7 +45,10 @@ const columns = [
   },
 
   {
-  title: <span className="header-light-blue" style={{ fontWeight: "700", fontSize: "18px" }}>Action</span>,
+  title: ( <span className="header-light-blue" style={{ fontWeight: "700", fontSize: "18px" }}>
+   {Language[currentLang]?.action || "Action"}
+  </span>
+  ),
   key: 'action',
   render: (_, record) => (
     <Space size="middle" direction="vertical">
@@ -49,7 +56,8 @@ const columns = [
         <div className='header-actions'>
       <Button 
         type="primary"
-        buttontext="Get Admit Card"
+       buttontext={Language[currentLang]?.getAdmit || "Get Admit Card"}
+
         classname="my-admit-btn  header-login-btn"
       />
 
@@ -58,7 +66,7 @@ const columns = [
           <Button 
           type="primary"
           classname="my-center-btn  header-login-btn"
-          buttontext="Get Center Map"
+          buttontext={Language[currentLang]?.getCenter || "Get Center Map"}
           />
         )}  
 
@@ -259,7 +267,7 @@ const data = [
 
 ];
 
-const App = ({ searchText }) => {
+
 
   const filteredData = data.filter((item) =>
     item.admitcard.toLowerCase().includes(searchText.toLowerCase())
@@ -275,4 +283,4 @@ const App = ({ searchText }) => {
   );
 };
 
-export default App;
+export default TableComponent;
