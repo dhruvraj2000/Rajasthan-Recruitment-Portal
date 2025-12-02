@@ -2,10 +2,18 @@ import React from 'react';
 import { Table, Space, } from 'antd';
 import Button from "../components/Button";
 import Language from '../data/Language';
+import { SkeletonButton } from './SkeletonComponent';
+import { useEffect, useState } from 'react';
 
 const TableComponent = ({ searchText, currentLang }) => {
+  const [loading, setLoading] = useState(true);
 
-const columns = [
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const columns = [
   {
     title:( <span  className="header-light-blue" style={{ fontWeight: "700", fontSize: "18px" }}>
        {Language[currentLang]?.admitcard || "Admit Card"}
@@ -54,21 +62,30 @@ const columns = [
     <Space size="middle" direction="vertical">
 
         <div className='header-actions'>
-      <Button 
-        type="primary"
-       buttontext={Language[currentLang]?.getAdmit || "Get Admit Card"}
-
-        classname="my-admit-btn  header-login-btn"
-      />
+          {loading? (
+            <SkeletonButton/>
+          ):(
+            <Button 
+            type="primary"
+            buttontext={Language[currentLang]?.getAdmit || "Get Admit Card"}
+            
+            classname="my-admit-btn  header-login-btn"
+            />
+          )}
 
 
       {record.hasCenterMap === true && (
-          <Button 
-          type="primary"
-          classname="my-center-btn  header-login-btn"
-          buttontext={Language[currentLang]?.getCenter || "Get Center Map"}
-          />
-        )}  
+        loading ?(
+          <SkeletonButton/>
+
+        ):(
+        <Button 
+        type="primary"
+        classname="my-center-btn  header-login-btn"
+        buttontext={Language[currentLang]?.getCenter || "Get Center Map"}
+        />
+        )
+      )}  
 
         </div>
     </Space>
