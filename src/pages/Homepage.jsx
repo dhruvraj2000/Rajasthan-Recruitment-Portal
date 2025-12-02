@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-import { useState } from "react";
-=======
 import { useState, useEffect } from "react";
->>>>>>> Stashed changes
 import { Card, Row } from "antd";
 import { motion } from "framer-motion";
 import { Users, FileCheck, Briefcase, ArrowRight, Bell } from "lucide-react";
@@ -12,9 +8,6 @@ import AnimatedStat from "../components/stats/AnimatedStat";
 import CustomButton from "../components/Button";
 import CustomTabs from "../components/Tabs";
 import Slider from "react-slick";
-<<<<<<< Updated upstream
-import { a } from "framer-motion/client";
-=======
 
 import {
   SkeletonButton,
@@ -25,18 +18,10 @@ import {
   SkeletonLine,
   SkeletonSquare,
 } from "../components/SkeletonComponent";
->>>>>>> Stashed changes
 
 const HomePage = () => {
   const [theme, setTheme] = useState("theme-blue");
 
-<<<<<<< Updated upstream
-  const settings = {
-    arrows: false,
-    autoplay: true,
-    infinite: true, // ✅ keep only this
-    speed: 200,
-=======
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
@@ -47,7 +32,6 @@ const HomePage = () => {
     arrows: true,
     infinite: false,
     speed: 500,
->>>>>>> Stashed changes
     slidesToShow: 4,
     slidesToScroll: 1, // scroll one by one for smooth loop
     initialSlide: 0,
@@ -63,24 +47,7 @@ const HomePage = () => {
       },
       {
         breakpoint: 600,
-<<<<<<< Updated upstream
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          initialSlide: 0,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-=======
         settings: { slidesToShow: 2, slidesToScroll: 2, initialSlide: 2 },
->>>>>>> Stashed changes
       },
       { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
     ],
@@ -201,14 +168,7 @@ const HomePage = () => {
 
   return (
     <div className={`app-wrapper ${theme}`}>
-<<<<<<< Updated upstream
-      {/* <Navbar/> */}
-      {/* Main Content */}
       <div>
-        {/* Stats Section */}
-=======
-      <div>
->>>>>>> Stashed changes
         <section className="stats-grid">
           {loading ? (
             <>
@@ -394,35 +354,6 @@ const HomePage = () => {
 
         <section className="section-block">
           <Sectionlabel labeltext="Job" sublabeltext="Openings" />
-<<<<<<< Updated upstream
-          <div className="job-list">
-            {jobs.map((job, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-              >
-                <Card className="job-card">
-                  <div className="job-card-inner">
-                    <div className="job-title-img">{job.icon}</div>
-                    <div className="job-title">
-                      <p> {job.jobs}</p>
-                      <label>{job.sub}</label>
-                    </div>
-                    <CustomButton
-                      type="default"
-                      buttontext="Apply"
-                      classname="outline-btn"
-                      icons={<ArrowRight />}
-                    />
-                  </div>
-                  <div className="last-reg-date">
-                    <label>{job.date}</label>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-=======
 
           <div className="job-list">
             {loading
@@ -472,7 +403,6 @@ const HomePage = () => {
                     </Card>
                   </motion.div>
                 ))}
->>>>>>> Stashed changes
           </div>
         </section>
 
@@ -480,23 +410,6 @@ const HomePage = () => {
           <Sectionlabel labeltext="Official" sublabeltext="Stakeholders" />
 
           <Slider {...settings} className="stakeholder-slider">
-<<<<<<< Updated upstream
-            {stakeholders.map((s, i) => (
-              <motion.div
-                className="Stakeholders-div"
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-              >
-                <Card className="stake-card">
-                  <div className="stake-card-inner">
-                    <div>{s.icon}</div>
-                    <p>{s.name}</p>{" "}
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-=======
             {loading
               ? [...Array(4)].map((_, i) => (
                   <Card className="stake-card" key={i}>
@@ -520,7 +433,6 @@ const HomePage = () => {
                     </Card>
                   </motion.div>
                 ))}
->>>>>>> Stashed changes
           </Slider>
         </section>
       </div>
