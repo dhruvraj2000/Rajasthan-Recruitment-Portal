@@ -282,6 +282,7 @@ button:hover {
     font-weight: 700;
     text-align: center;
     margin-bottom: 12px;
+    text-align: center!important;
 }
 
 .steps-grid {
@@ -430,6 +431,7 @@ button:hover {
     border-radius: 12px;
     background: var(--card-bg);
     text-align: center;
+
 }
 
 /* Footer */
@@ -827,11 +829,13 @@ padding: 4px;
   height: 100% !important;
 }
 .stake-card {
-  min-height: 150px;   /* or any size you want */
+  min-height: 170px;   /* or any size you want */
 }
 .stake-card {
   height: 100% !important;
   display: flex;
+  justify-content: center;
+align-items: center;
 }
 
 .stake-card .ant-card-body {

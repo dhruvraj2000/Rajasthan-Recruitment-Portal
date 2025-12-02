@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { Card, Row } from "antd";
 import { motion } from "framer-motion";
 import { Users, FileCheck, Briefcase, ArrowRight, Bell } from "lucide-react";
@@ -8,25 +8,25 @@ import AnimatedStat from "../components/stats/AnimatedStat";
 import CustomButton from "../components/Button";
 import CustomTabs from "../components/Tabs";
 import Slider from "react-slick";
-
+import { a } from "framer-motion/client";
 
 const HomePage = () => {
   const [theme, setTheme] = useState("theme-blue");
 
   const settings = {
     arrows: false,
-
-    infinite: false,
-    speed: 500,
+    autoplay: true,
+    infinite: true, // ✅ keep only this
+    speed: 200,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 1, // scroll one by one for smooth loop
     initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -35,8 +35,9 @@ const HomePage = () => {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          initialSlide: 0,
         },
       },
       {
@@ -44,6 +45,7 @@ const HomePage = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          infinite: true,
         },
       },
     ],
@@ -87,24 +89,41 @@ const HomePage = () => {
     },
   ];
   const jobs = [
-    { icon: <img src="1.png" />, jobs: "Jamadar Grade II 2024,", sub: "RPSC" , date:"12-Dec-2024" },
+    {
+      icon: <img src="1.png" />,
+      jobs: "Jamadar Grade II 2024,",
+      sub: "RPSC",
+      date: "12-Dec-2024",
+    },
     {
       icon: <img src="2.png" />,
       jobs: "Statistical Officer 2025",
       sub: "RSSB",
-     date:"12-Dec-2024"
+      date: "12-Dec-2024",
     },
-    { icon: <img src="2.png" />, jobs: "Primary Teacher 2025", sub: "RPSC", date:"12-Dec-2024" },
+    {
+      icon: <img src="2.png" />,
+      jobs: "Primary Teacher 2025",
+      sub: "RPSC",
+      date: "12-Dec-2024",
+    },
   ];
 
   const stakeholders = [
-
-    {icon: <img src="1.png" />,name:"ICFRE-Arid Forest Research Institute"},
-    {icon: <img src="2.png" />,name:"National Health Mission, Rajasthan"},
-    {icon: <img src="3.png" />,name:"Department of Sanskrit Education, Govt. of Rajasthan"},
-    {icon: <img src="4.png" />,name:"Directorate Police Telecommunication, Rajasthan"},
-    {icon: <img src="1.png" />,name:"Rajasthan State Pollution Control Board"},
-
+    { icon: <img src="1.png" />, name: "ICFRE-Arid Forest Research Institute" },
+    { icon: <img src="2.png" />, name: "National Health Mission, Rajasthan" },
+    {
+      icon: <img src="3.png" />,
+      name: "Department of Sanskrit Education, Govt. of Rajasthan",
+    },
+    {
+      icon: <img src="4.png" />,
+      name: "Directorate Police Telecommunication, Rajasthan",
+    },
+    {
+      icon: <img src="1.png" />,
+      name: "Rajasthan State Pollution Control Board",
+    },
   ];
 
   const departmentStats = [
@@ -146,10 +165,9 @@ const HomePage = () => {
 
   return (
     <div className={`app-wrapper ${theme}`}>
-
-{/* <Navbar/> */}
+      {/* <Navbar/> */}
       {/* Main Content */}
-      <div >
+      <div>
         {/* Stats Section */}
         <section className="stats-grid">
           <AnimatedStat
@@ -298,10 +316,9 @@ const HomePage = () => {
                     </div>
                     <CustomButton
                       type="default"
-
                       buttontext="Apply"
                       classname="outline-btn"
-                       icons={<ArrowRight />}
+                      icons={<ArrowRight />}
                     />
                   </div>
                   <div className="last-reg-date">
@@ -328,17 +345,14 @@ const HomePage = () => {
                 <Card className="stake-card">
                   <div className="stake-card-inner">
                     <div>{s.icon}</div>
-                  <p>{ s.name }
-</p>                    </div>
-
+                    <p>{s.name}</p>{" "}
+                  </div>
                 </Card>
               </motion.div>
             ))}
           </Slider>
         </section>
       </div>
-
-
     </div>
   );
 };
