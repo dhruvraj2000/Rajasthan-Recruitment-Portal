@@ -488,24 +488,8 @@ const Frequentlyquestions = () => {
   return (
     <div className="faq-container">
       <div className="header-actions">
-        <div className="headerbackground header-login-btn">
-          <div
-            style={{ textAlign: "right", padding: "20px", marginRight: "2vw" }}
-          >
-            <CustomButton
-              type="primary"
-              buttontext="English"
-              onClick={() => setLanguage("en")}
-              classname="language-changed header-login-btn"
-            />
+        <div className="headerbackground faq-top-header">
 
-            <CustomButton
-              type="primary"
-              buttontext="हिन्दी"
-              onClick={() => setLanguage("hi")}
-              classname="language-changed header-login-btn"
-            />
-          </div>
 
           <h1>
             {language === "en"
