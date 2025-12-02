@@ -497,9 +497,9 @@ const Frequentlyquestions = () => {
          <div
             style={{ textAlign: "right"}}
       >
-      <a onClick={() => setLanguage(language === "en" ? "hi" : "en")}>
+      {/* <a onClick={() => setLanguage(language === "en" ? "hi" : "en")}>
   <img src={languageicon} alt="language icon" className="language-icon" />
-</a>
+</a> */}
 
           </div>
       <div className="header-actions">

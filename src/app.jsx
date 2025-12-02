@@ -12,8 +12,12 @@ import "./css/style.css";
 import ThemeSwitcher from "./components/ThemeSwitcher.jsx";
 import ThemeNavigation from "./components/ThemeNavigation.jsx"
 import { useState } from "react";
+import Language from "./data/Language.jsx";
+
 
 export default function App() {
+  const [currentLang, setCurrentLang] = useState("en");
+
   const [theme, setTheme] = useState("theme-blue");
 
   return (
@@ -21,14 +25,14 @@ export default function App() {
       <BrowserRouter>
         <ThemeSwitcher setTheme={setTheme} />
         <ThemeNavigation/>
-        <Header />
+        <Header currentLang={currentLang} setCurrentLang={setCurrentLang} />
         <Navbar />
         <main style={{ minHeight: "80vh" }}>
           <div className="main-content">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/ssoid" element={<Ssoid />} />
-              <Route path="/Admitcard"element={<Admitcard />}/>
+              <Route path="/Admitcard"element={<Admitcard currentLang={currentLang}  />}/>
               <Route path="/results" element={<Results />} />
               <Route path="/faq" element={<FAQs />} />
             </Routes>
