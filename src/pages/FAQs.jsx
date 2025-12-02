@@ -488,7 +488,9 @@ const Frequentlyquestions = () => {
   return (
     <div className="faq-container">
       <div className="header-actions">
+
         <div className="headerbackground faq-top-header">
+
 
 
           <h1>
