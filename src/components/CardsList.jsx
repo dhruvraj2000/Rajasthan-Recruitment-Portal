@@ -1,33 +1,24 @@
 import React from "react";
 import CustomButton from "../components/Button";
+import Language from "../data/Language";
 
-const CardsList = ({ cards, activeSection, setActiveSection, language, style }) => {
+const CardsList = ({ card, activeSection, setActiveSection, currentLang }) => {
   return (
-    <div className="cards">
-      {cards.map((c) => (
-        <div
-          className={`card ${activeSection === c.id ? "active" : ""}`}
-          key={c.id}
-          onClick={() => {
-            setActiveSection(c.id);
-          }}
-        >
-          <img src={c.img} alt="" className="card-icon" />
-          
-          <div className="card-title">{c.title[language]}</div>
-          <p className="card-desc">{c.desc[language]}</p>
+    <div
+      className={`card ${activeSection === card.id ? "active" : ""}`}
+      onClick={() => setActiveSection(card.id)}
+    >
+      <img src={card.img} alt="" className="card-icon" />
 
-          <div className="header-actions">
-            <CustomButton
-              type="primary"
-              buttontext={language === "en" ? "View Details" : "विवरण देखें"}
-              classname="view-btn header-login-btn"
-              style={style}
-              onClick={() => console.log("Button clicked")}
-            />
-          </div>
-        </div>
-      ))}
+      <div className="card-title">{card.title}</div>
+      <p className="card-desc header-actions">{card.desc}</p>
+<div className="header-actions">
+      <CustomButton
+        type="primary"
+        buttontext={Language[currentLang].viewDetails}
+        classname="view-btn card-btn header-login-btn" 
+      />
+      </div>
     </div>
   );
 };

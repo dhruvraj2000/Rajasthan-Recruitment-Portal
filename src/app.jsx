@@ -31,10 +31,10 @@ export default function App() {
           <div className="main-content">
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/ssoid" element={<Ssoid />} />
+              <Route path="/ssoid" element={<Ssoid currentLang={currentLang} />} />
               <Route path="/Admitcard"element={<Admitcard currentLang={currentLang}  />}/>
-              <Route path="/results" element={<Results />} />
-              <Route path="/faq" element={<FAQs />} />
+              <Route path="/results" element={<Results currentLang={currentLang}  />} />
+              <Route path="/faq" element={<FAQs currentLang={currentLang}  />} />
             </Routes>
           </div>
         </main>
