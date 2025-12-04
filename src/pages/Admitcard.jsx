@@ -25,7 +25,7 @@ const Admitcard = ({ currentLang }) => {
 
   return (
     <div>
-      <Pageheader title={Language[currentLang].admitcard} />
+      <Pageheader title={Language[currentLang].admitcard}/>
       <PagePartition
         items={[
            { title: Language[currentLang].home, to: "/" },
@@ -61,7 +61,6 @@ const Admitcard = ({ currentLang }) => {
             </Col>
 
             <Col span={24}>
-            
               <Table searchText={searchText}  currentLang={currentLang}/>
             </Col>
           </Row>
