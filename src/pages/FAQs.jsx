@@ -16,45 +16,21 @@ import eOtrPic4 from "../assets/Svg/eOtrPic4.png";
 import pOtrPic1 from "../assets/Svg/pOtrPic1.png";
 import CET_ques2 from "../assets/Svg/CET_ques2.png";
 import FAQCollapse from "../components/FAQCollapse";
-
-const Frequentlyquestions = () => {
+import Language from "../data/Language";
+const Frequentlyquestions = ({ currentLang }) => {
   const [activeSection, setActiveSection] = useState("general");
   const [language, setLanguage] = useState("en");
   const [searchTerm, setSearchTerm] = useState("");
 
   const sectionHeadings = {
-    general: {
-      en: "Activated/Deactivated OTR Profile related FAQs",
-      hi: "सक्रिय/निष्क्रिय ओटीआर प्रोफ़ाइल से संबंधित प्रश्न",
-    },
-    billing: {
-      en: "Edit OTR details related FAQs",
-      hi: "ओटीआर विवरण संपादित करने से संबंधित प्रश्न",
-    },
-    paymentotr: {
-      en: "Payment on OTR profile related FAQs",
-      hi: "ओटीआर प्रोफ़ाइल पर भुगतान से संबंधित प्रश्न",
-    },
-    helpline: {
-      en: "Helpline number for any type of queries",
-      hi: "किसी भी प्रकार की पूछताछ के लिए हेल्पलाइन नंबर",
-    },
-    cet: {
-      en: "Queries regarding CET based Recruitment",
-      hi: "सीईटी आधारित भर्ती से संबंधित प्रश्न",
-    },
-    result: {
-      en: "Result related FAQs",
-      hi: "परिणाम से संबंधित प्रश्न",
-    },
-    scrutiny: {
-      en: "Scrutiny related FAQs",
-      hi: "परीक्षण संबंधित प्रश्न",
-    },
-    helpline2: {
-      en: "Support & Helpline FAQs",
-      hi: "सहायता और हेल्पलाइन संबंधित प्रश्न",
-    },
+    general: Language[currentLang].generalHeading,
+    billing: Language[currentLang].billingHeading,
+    paymentotr: Language[currentLang].paymentotrHeading,
+    helpline: Language[currentLang].helplineHeading,
+    cet: Language[currentLang].cetHeading,
+    result: Language[currentLang].resultHeading,
+    scrutiny: Language[currentLang].scrutinyHeading,
+    helpline2: Language[currentLang].helplineHeading2,
   };
 
   const faqData = {
@@ -437,50 +413,50 @@ const Frequentlyquestions = () => {
   const cards = [
     {
       id: "general",
-      title: { en: "OTR", hi: "वन टाइम रजिस्ट्रेशन" },
-      desc: { en: "One Time Registration", hi: "वन टाइम रजिस्ट्रेशन विवरण" },
+      title: Language[currentLang].otrHeading,
+      desc: Language[currentLang].otrDesc,
       img: loginIcon,
     },
     {
       id: "billing",
-      title: { en: "Exam Application", hi: "परीक्षा आवेदन" },
-      desc: { en: "Exam Application details", hi: "परीक्षा विवरण" },
+      title: Language[currentLang].examApplication,
+      desc: Language[currentLang].examApplicationDesc,
       img: examResults,
     },
     {
       id: "paymentotr",
-      title: { en: "Exam Edit Application", hi: "ओटीआर संपादित करें" },
-      desc: { en: "Edit your OTR details", hi: "ओटीआर विवरण संपादित करें" },
+      title: Language[currentLang].examEdit,
+      desc: Language[currentLang].examEditOtr,
       img: examIcon,
     },
     {
       id: "helpline",
-      title: { en: "Admit Card", hi: "एडमिट कार्ड" },
-      desc: { en: "Download Admit Card", hi: "एडमिट कार्ड डाउनलोड करें" },
+      title: Language[currentLang].admitcard,
+      desc: Language[currentLang].DownloadAdmitCard,
       img: identityCard,
     },
     {
       id: "cet",
-      title: { en: "Objection", hi: "आपत्ति" },
-      desc: { en: "Submit Objection", hi: "आपत्ति दर्ज करें" },
+      title: Language[currentLang].objection,
+      desc: Language[currentLang].submitObjection,
       img: userIcon,
     },
     {
       id: "result",
-      title: { en: "Result", hi: "परिणाम" },
-      desc: { en: "Check your result", hi: "परिणाम देखें" },
+      title: Language[currentLang].resultHeading,
+      desc: Language[currentLang].checkResult,
       img: medicalResult,
     },
     {
       id: "scrutiny",
-      title: { en: "Scrutiny", hi: "परीक्षण" },
-      desc: { en: "Scrutiny details", hi: "परीक्षण विवरण" },
+      title: Language[currentLang].scrutinyHeading,
+      desc: Language[currentLang].scrutinyDetails,
       img: scrutiny,
     },
     {
       id: "helpline2",
-      title: { en: "Helpline", hi: "सहायता" },
-      desc: { en: "Support & helpline", hi: "सहायता और हेल्पलाइन" },
+      title: Language[currentLang].helplineHeading,
+      desc: Language[currentLang].supportHelpline,
       img: helpline,
     },
   ];
@@ -489,57 +465,51 @@ const Frequentlyquestions = () => {
     <div className="faq-container">
       <div className="header-actions">
 
-        <div className="headerbackground faq-top-header">
-
-
-
-          <h1>
-            {language === "en"
-              ? "Frequently Asked Questions"
-              : "अक्सर पूछे जाने वाले प्रश्न"}
-          </h1>
-          <p>
-            {language === "en"
-              ? "Find answers to common questions"
-              : "सामान्य प्रश्नों के उत्तर जानें"}
-          </p>
+        <div className="headerbackground header-login-btn faq-top-header">
+          <h1>{Language[currentLang].faqQues}</h1>
+          <p>{Language[currentLang].faqAnsw}</p>
+   </div>
 
           <div className="search-container">
             <div className="search-box">
               <i className="fa-solid fa-magnifying-glass"></i>
 
               <input
-                placeholder={
-                  language === "en" ? "Search questions..." : "प्रश्न खोजें..."
-                }
+                placeholder={Language[currentLang].searchQues}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
               />
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="container">
-        <CardsList
-          cards={cards}
-          activeSection={activeSection}
-          setActiveSection={(section) => setActiveSection(section)}
-          language={language}
-        />
+<div className="container">
+  <div className="cards">
+    {cards.map((c) => (
+      <CardsList
+        key={c.id}
+        card={c}
+        activeSection={activeSection}
+        setActiveSection={setActiveSection}
+        currentLang={currentLang}
+      />
+    ))}
+  </div>
 
-        <div className="faq-section">
-          <h2 style={{ color: "#3b4ce2" }}>
-            {sectionHeadings[activeSection]?.[language]}
-          </h2>
+  <div className="faq-section">
+    <h2 style={{ color: "#3b4ce2" }}>
+      {sectionHeadings[activeSection]}
+    </h2>
 
-          <FAQCollapse
-            data={faqData[activeSection]}
-            language={language}
-            searchTerm={searchTerm}
-          />
-        </div>
-      </div>
+    <FAQCollapse
+      data={faqData[activeSection]}
+      language={language}
+      searchTerm={searchTerm}
+    />
+  </div>
+</div>
+
+
     </div>
   );
 };

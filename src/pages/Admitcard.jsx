@@ -8,28 +8,30 @@ import CustomInput from "../components/Input";
 import Language from "../data/Language";
 import { SkeletonInput } from "../components/SkeletonComponent";
 
-
-
-
 const Admitcard = ({ currentLang }) => {
   const [loading, setLoading] = useState(true);
 
   const [searchText, setSearchText] = useState("");
 
-
-  useEffect(() =>{
-    const timer = setTimeout(()=> setLoading(false), 3000);
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 3000);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <div>
-      <Pageheader title={Language[currentLang].admitcard} />
+      <Pageheader title={Language[currentLang].admitcard}/>
       <PagePartition
         items={[
-           { title: Language[currentLang].home, to: "/" },
-          { title: <span style={{ fontWeight: 700 }}>{Language[currentLang].admitcard}</span> },
+          { title: Language[currentLang].home, to: "/" },
+          {
+            title: (
+              <span style={{ fontWeight: 700 }}>
+                {Language[currentLang].admitcard}
+              </span>
+            ),
+          },
         ]}
       />
 
@@ -38,31 +40,29 @@ const Admitcard = ({ currentLang }) => {
           <Col></Col>
           <Col></Col>
         </Row>
- 
-          
+
         <div className="table-box">
           <Row>
             <Col xs={20} sm={12} md={8} lg={8}>
-        {loading? (
-          <SkeletonInput/>
-          
-        ):(
-          
-          <CustomInput
-          placeholder={Language[currentLang].searchByName}
-          prefix={<SearchOutlined />}
-          allowClear={true}
-          className={"search-input"}
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-          
-          />
-        )}
+              {loading ? (
+                <SkeletonInput />
+              ) : (
+                <CustomInput
+                  placeholder={Language[currentLang].searchByName}
+                  prefix={<SearchOutlined />}
+                  allowClear={true}
+                  className={"search-input"}
+                  value={searchText}
+                  onChange={(e) => setSearchText(e.target.value)}
+                />
+              )}
             </Col>
 
             <Col span={24}>
-            
-              <Table searchText={searchText}  currentLang={currentLang}/>
+
+
+              <Table searchText={searchText} currentLang={currentLang} />
+
             </Col>
           </Row>
         </div>

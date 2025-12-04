@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import CustomButton from "./Button";
 import CustomInput from "./Input";
-
+import Language from "../data/Language";
 const generateCaptchaText = () => {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let text = "";
@@ -11,7 +11,7 @@ const generateCaptchaText = () => {
   return text;
 };
 
-const CaptchaBox = ({ length = 6, onVerify }) => {
+const CaptchaBox = ({ length = 6, onVerify, currentLang }) => { 
   const canvasRef = useRef(null);
   const [captcha, setCaptcha] = useState("");
   const [input, setInput] = useState("");
@@ -21,7 +21,6 @@ const CaptchaBox = ({ length = 6, onVerify }) => {
     const ctx = canvas.getContext("2d");
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     ctx.fillStyle = "#f5f5f5";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -29,7 +28,6 @@ const CaptchaBox = ({ length = 6, onVerify }) => {
     ctx.fillStyle = "#000";
 
     const angle = Math.random() * 0.3 - 0.15;
-
     ctx.save();
     ctx.translate(75, 25);
     ctx.rotate(angle);
@@ -57,38 +55,32 @@ const CaptchaBox = ({ length = 6, onVerify }) => {
   }, [length]);
 
   const verify = () => {
-    onVerify && onVerify(input.toUpperCase() === captcha.toUpperCase());
+    onVerify?.(input.toUpperCase() === captcha.toUpperCase());
   };
 
   const playAudio = () => {
     const utter = new SpeechSynthesisUtterance();
-
     utter.text = captcha.split("").join(" ");
-
     utter.rate = 0.8;
     utter.pitch = 1;
-
     speechSynthesis.speak(utter);
   };
 
   return (
     <div className="captcha-wrapper">
-      <div className="captcha-area ">
+      <div className="captcha-area">
         <canvas ref={canvasRef} width={150} height={40}></canvas>
 
-        {/* Reload */}
         <button className="reload-btn" onClick={refresh}>↻</button>
-
-        {/* Speaker Icon */}
-        <button className="sound-btn" onClick={playAudio}>
-          🔊
-        </button>
+        <button className="sound-btn" onClick={playAudio}>🔊</button>
       </div>
 
-      <CustomInput  className="captcha-input"   placeholder="Enter captcha"
+      <CustomInput 
+        className="captcha-input"
+        placeholder={Language[currentLang].captchaplaceholder}
         value={input}
-        onChange={(e) => setInput(e.target.value)}/>
-
+        onChange={(e) => setInput(e.target.value)}
+      />
     </div>
   );
 };
