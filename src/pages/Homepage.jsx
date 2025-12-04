@@ -303,7 +303,7 @@ const settings = {
 
           <div className="steps-grid">
             {loading
-              ? [...Array(14)].map((_, i) => (
+              ? [...Array(4)].map((_, i) => (
                   <Card className="step-card" key={i}>
                     <SkeletonLine width="40%" />
                     <SkeletonLine width="60%" />

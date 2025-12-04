@@ -31,14 +31,16 @@ textarea {
 .text-center {
     text-align: center;
 }
-
+ .ant-form-item-label  label{
+    font-weight: 500;
+    font-size: 14px;
+}
 .app-wrapper {
     font-family: "Montserrat Variable";
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
-
 
 .start-one-time-btn {
     margin-top: 25px;
@@ -1001,11 +1003,10 @@ padding: 20px !important;
   width: 100%;
 
 }
-
 .form-style {
 
   background: #ffffff;
-  padding: 30px 40px;
+  padding: 25px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
@@ -1037,7 +1038,7 @@ body {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  /* justify-content: center; */
+   /* justify-content: center; */
   margin-top: 20px;
 }
 
@@ -1046,7 +1047,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  min-width: 250px;
+  min-width: 245px;
   background: white;
   padding: 25px;
   border-radius: 14px;
@@ -1317,7 +1318,7 @@ font-size: 0.9rem;
 
 /*edit by gaurang*/
 .search-input {
-    
+
     height: 40px;
     border-color: #7382a2;
     border-radius: 8px !important;
@@ -1328,6 +1329,9 @@ font-size: 0.9rem;
 @media (max-width: 768px) {
     .search-input {
         width: 100% !important;
+    }
+    .header-logo{
+        width: 250px;
     }
 }
 .ant-table-cell{
@@ -1478,4 +1482,7 @@ margin-bottom: 20px;
   .start-one-time-btn button{
    margin-left: -13px !important;
   }
+}
+.menu__mobile-button{
+    background-color: var(--primary);
 }
