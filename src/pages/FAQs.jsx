@@ -468,7 +468,7 @@ const Frequentlyquestions = ({ currentLang }) => {
         <div className="headerbackground header-login-btn faq-top-header">
           <h1>{Language[currentLang].faqQues}</h1>
           <p>{Language[currentLang].faqAnsw}</p>
-   </div>
+
 
           <div className="search-container">
             <div className="search-box">
@@ -482,7 +482,7 @@ const Frequentlyquestions = ({ currentLang }) => {
             </div>
           </div>
         </div>
-
+      </div>
 <div className="container">
   <div className="cards">
     {cards.map((c) => (
