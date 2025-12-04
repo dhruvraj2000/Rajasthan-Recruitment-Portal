@@ -2,11 +2,24 @@ import React from 'react';
 import { Table, Space, } from 'antd';
 import Button from "../components/Button";
 import Language from '../data/Language';
-import { SkeletonButton } from './SkeletonComponent';
+import { SkeletonButton, SkeletonLine } from './SkeletonComponent';
 import { useEffect, useState } from 'react';
+
 
 const TableComponent = ({ searchText, currentLang }) => {
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+
+
+const handlePageChange = (page) => {
+  setCurrentPage(page);
+  setLoading(true); 
+
+  setTimeout(() => {
+    setLoading(false); 
+  }, 3000);
+};
+
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 3000);
@@ -284,19 +297,22 @@ const data = [
 
 ];
 
-
-
   const filteredData = data.filter((item) =>
     item.admitcard.toLowerCase().includes(searchText.toLowerCase())
   );
 
   return (
-    <Table
-      columns={columns}
-      dataSource={filteredData}
-      pagination={{ pageSize: 10 }}
-      className="custom-table"
-    />
+     <Table
+  columns={columns}
+  dataSource={filteredData}
+  pagination={{
+    current: currentPage,
+    pageSize: 10,
+    onChange: handlePageChange,
+  }}
+  className="custom-table"
+/>
+
   );
 };
 
