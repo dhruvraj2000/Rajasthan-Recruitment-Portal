@@ -24,7 +24,7 @@ export default function App() {
     <div className={`app-wrapper ${theme}`}>
       <BrowserRouter>
         <ThemeSwitcher setTheme={setTheme} />
-        <ThemeNavigation/>
+        <ThemeNavigation  currentLang={currentLang} setCurrentLang={setCurrentLang}/>
         <Header currentLang={currentLang} setCurrentLang={setCurrentLang} />
         <Navbar />
         <main style={{ minHeight: "80vh" }}>

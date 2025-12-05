@@ -1,7 +1,8 @@
 import React from "react";
 import { Row, Col } from "antd";
+import languageicon from "../assets/Svg/language.svg"
 
-const ThemeNavigation = () => {
+const ThemeNavigation = ({currentLang, setCurrentLang}) => {
   return (
     <div className="topbar d-flex align-items-center py-1">
       <div className="container-fluid container-space">
@@ -44,6 +45,10 @@ const ThemeNavigation = () => {
                 <a href="#" id="decreaseFont" className="me-2">
                   A<sup>-</sup>
                 </a>
+ 
+   <a onClick={() => setCurrentLang(currentLang === "en" ? "hi" : "en")}>
+                <img src={languageicon} alt="language icon" className="language-icon"/>
+              </a>
 
                 <a href="#" id="contrast" className="me-3">
                   <i className="bi bi-circle-half"></i>

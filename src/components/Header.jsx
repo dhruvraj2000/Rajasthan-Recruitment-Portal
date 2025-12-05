@@ -20,9 +20,9 @@ const Header=({ currentLang, setCurrentLang }) =>{
 
           <div className="header-actions">
 
-             <a onClick={() => setCurrentLang(currentLang === "en" ? "hi" : "en")}>
+        {/*     <a onClick={() => setCurrentLang(currentLang === "en" ? "hi" : "en")}>
               <img src={languageicon} alt="language icon" className="language-icon"/>
-            </a>
+            </a> */}
             <CustomButton
               type="primary"
                 buttontext={Language[currentLang].login}
