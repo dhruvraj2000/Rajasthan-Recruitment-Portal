@@ -1,32 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { Table, Space, } from 'antd';
 import Button from "../components/Button";
 import Language from '../data/Language';
-import { SkeletonButton, SkeletonLine } from './SkeletonComponent';
-import { useEffect, useState } from 'react';
+import LogoLoader from "../components/LogoLoader";
 
 
 const TableComponent = ({ searchText, currentLang }) => {
   const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-
-
-const handlePageChange = (page) => {
-  setCurrentPage(page);
-  setLoading(true); 
-
-  setTimeout(() => {
-    setLoading(false); 
-  }, 3000);
-};
-
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000);
+   
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
     return () => clearTimeout(timer);
   }, []);
 
-  const columns = [
+const columns = [
   {
     title:( <span  className="header-light-blue" style={{ fontWeight: "700", fontSize: "18px" }}>
        {Language[currentLang]?.admitcard || "Admit Card"}
@@ -67,7 +58,7 @@ const handlePageChange = (page) => {
 
   {
   title: ( <span className="header-light-blue" style={{ fontWeight: "700", fontSize: "18px" }}>
-   {Language[currentLang]?.action || "Action"}
+    {Language[currentLang]?.action || "Action"}
   </span>
   ),
   key: 'action',
@@ -75,30 +66,21 @@ const handlePageChange = (page) => {
     <Space size="middle" direction="vertical">
 
         <div className='header-actions'>
-          {loading? (
-            <SkeletonButton/>
-          ):(
-            <Button 
-            type="primary"
-            buttontext={Language[currentLang]?.getAdmit || "Get Admit Card"}
-            
-            classname="my-admit-btn  header-login-btn"
-            />
-          )}
+      <Button 
+        type="primary"
+       buttontext={Language[currentLang]?.getAdmit || "Get Admit Card"}
+
+        classname="my-admit-btn  header-login-btn"
+      />
 
 
       {record.hasCenterMap === true && (
-        loading ?(
-          <SkeletonButton/>
-
-        ):(
-        <Button 
-        type="primary"
-        classname="my-center-btn  header-login-btn"
-        buttontext={Language[currentLang]?.getCenter || "Get Center Map"}
-        />
-        )
-      )}  
+          <Button 
+          type="primary"
+          classname="my-center-btn  header-login-btn"
+          buttontext={Language[currentLang].getCenter || "Get Admit Card"}
+          />
+        )}  
 
         </div>
     </Space>
@@ -106,7 +88,6 @@ const handlePageChange = (page) => {
 },
 
 ];
-
 const data = [
   {
     key: '1',
@@ -297,23 +278,22 @@ const data = [
 
 ];
 
-  const filteredData = data.filter((item) =>
-    item.admitcard.toLowerCase().includes(searchText.toLowerCase())
-  );
+const filteredData = data.filter((item) => 
+ item.admitcard.toLowerCase().includes(searchText.toLowerCase()) );
 
-  return (
-     <Table
-  columns={columns}
-  dataSource={filteredData}
-  pagination={{
-    current: currentPage,
-    pageSize: 10,
-    onChange: handlePageChange,
-  }}
-  className="custom-table"
-/>
 
-  );
+return (
+  <>
+    {loading && <LogoLoader />}
+
+    <Table
+      columns={columns}
+      dataSource={filteredData}
+      pagination={{ pageSize: 10 }}
+      className="custom-table"
+    />
+  </>
+);
 };
 
 export default TableComponent;
