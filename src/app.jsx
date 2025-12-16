@@ -15,10 +15,11 @@ import { useState } from "react";
 import Language from "./data/Language.jsx";
 
 
+
 export default function App() {
   const [currentLang, setCurrentLang] = useState("en");
 
-  const [theme, setTheme] = useState("theme-blue");s
+  const [theme, setTheme] = useState("theme-blue");
 
   return (
     <div className={`app-wrapper ${theme}`}>
@@ -30,11 +31,11 @@ export default function App() {
         <main style={{ minHeight: "80vh" }}>
           <div className="main-content">
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/ssoid" element={<Ssoid />} />
+              <Route path="/" element={<HomePage  currentLang={currentLang} setCurrentLang={setCurrentLang}/>} />
+              <Route path="/ssoid" element={<Ssoid  currentLang={currentLang} setCurrentLang={setCurrentLang}/>} />
               <Route path="/Admitcard"element={<Admitcard currentLang={currentLang}  />}/>
-              <Route path="/results" element={<Results />} />
-              <Route path="/faq" element={<FAQs />} />
+              <Route path="/results" element={<Results  currentLang={currentLang} setCurrentLang={setCurrentLang}/>} />
+              <Route path="/faq" element={<FAQs  currentLang={currentLang} setCurrentLang={setCurrentLang}/>} />
             </Routes>
           </div>
         </main>
