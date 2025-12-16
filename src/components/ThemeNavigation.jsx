@@ -1,4 +1,5 @@
 import React from "react";
+import Language from "../data/Language";
 import { Row, Col } from "antd";
 import languageicon from "../assets/Svg/language.svg"
 
@@ -55,7 +56,7 @@ const ThemeNavigation = ({currentLang, setCurrentLang}) => {
                 </a>
 
                 <a href="#examLifeCycle" id="skip" className="me-3">
-                  Skip to content
+                  {Language[currentLang].skipContent}
                 </a>
               </div>
             </div>

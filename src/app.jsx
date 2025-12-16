@@ -26,7 +26,7 @@ export default function App() {
         <ThemeSwitcher setTheme={setTheme} />
         <ThemeNavigation  currentLang={currentLang} setCurrentLang={setCurrentLang}/>
         <Header currentLang={currentLang} setCurrentLang={setCurrentLang} />
-        <Navbar />
+        <Navbar currentLang={currentLang}/>
         <main style={{ minHeight: "80vh" }}>
           <div className="main-content">
             <Routes>
@@ -38,7 +38,7 @@ export default function App() {
             </Routes>
           </div>
         </main>
-        <Footer />
+        <Footer currentLang={currentLang} />
       </BrowserRouter>
     </div>
   );
