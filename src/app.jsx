@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage.jsx";
+import HomePage from "./pages/Homepage.jsx";
 import Ssoid from "./pages/Ssoid.jsx";
 import Admitcard from "./pages/Admitcard.jsx"
 import Results from "./pages/results.jsx";
@@ -24,13 +24,13 @@ export default function App() {
     <div className={`app-wrapper ${theme}`}>
       <BrowserRouter>
         <ThemeSwitcher setTheme={setTheme} />
-        <ThemeNavigation/>
+        <ThemeNavigation currentLang={currentLang}/>
         <Header currentLang={currentLang} setCurrentLang={setCurrentLang} />
-        <Navbar />
+        <Navbar currentLang={currentLang}/>
         <main style={{ minHeight: "80vh" }}>
           <div className="main-content">
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<HomePage  currentLang={currentLang}/>} />
               <Route path="/ssoid" element={<Ssoid currentLang={currentLang} />} />
               <Route path="/Admitcard"element={<Admitcard currentLang={currentLang}  />}/>
               <Route path="/results" element={<Results currentLang={currentLang}  />} />
@@ -38,7 +38,7 @@ export default function App() {
             </Routes>
           </div>
         </main>
-        <Footer />
+        <Footer currentLang={currentLang} />
       </BrowserRouter>
     </div>
   );

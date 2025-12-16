@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import LeftMenu from "./LeftMenu";
-
+import Language from "../data/Language";
 import { Drawer, Button } from "antd";
 import { AlignRightOutlined } from "@ant-design/icons";
 
-const Navbar = () => {
+const Navbar = ({ currentLang }) => {
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -19,7 +19,7 @@ const Navbar = () => {
     <nav className="menu">
       <div className="menu__container header-inner header-inner-menu  p-0">
         <div className="menu_left">
-          <LeftMenu mode="horizontal" />
+          <LeftMenu currentLang={currentLang} mode="horizontal" />
         </div>
 
         {/* Mobile Button */}

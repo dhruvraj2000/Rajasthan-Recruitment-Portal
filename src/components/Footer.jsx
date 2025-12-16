@@ -1,49 +1,40 @@
 import React from 'react'
-export default function Footer(){
+import Language from "../data/Language";
+export default function Footer({ currentLang }){
   return (
     <footer className="footer-container">
       <div className="footer-grid">
         <div class="footer1">
           <img src='withouttextlogo.svg' />
           <p className='footer-img-header'>State Recruitment Portal</p>
-          {/* <h4 className="footer-heading">State Recruitment Portal</h4>
-          <ul>
-            <li>Home Page</li>
-            <li>SSO ID</li>
-            <li>Admit Card</li>
-            <li>Result</li>
-            <li>FAQ</li>
-          </ul> */}
-
-
         </div>
         <div>
           <h4 className="footer-heading">State Recruitment Portal</h4>
           <ul>
 
-            <li><a>Home Page</a></li>
-            <li><a>SSO ID</a></li>
-            <li><a>Admit Card</a></li>
-            <li><a>Result</a></li>
-            <li><a>FAQ</a></li>
+            <li><a>{Language[currentLang].homePage}</a></li>
+            <li><a>{Language[currentLang].ssoid}</a></li>
+            <li><a>{Language[currentLang].admitcard}</a></li>
+            <li><a>{Language[currentLang].result}</a></li>
+            <li><a>{Language[currentLang].faqs}</a></li>
           </ul>
         </div>
 
         <div>
           <h4 className="footer-heading">Policies</h4>
           <ul>
-            <li><a>Aadhaar Privacy Policy</a></li>
-            <li><a>Terms & Conditions</a></li>
-            <li><a>Data Protection Rules</a></li>
+            <li><a>{Language[currentLang].aadhaarPrivacyPolicy}</a></li>
+            <li><a>{Language[currentLang].termsConditions}</a></li>
+            <li><a>{Language[currentLang].dataProtectionRules}</a></li>
           </ul>
         </div>
 
         <div>
           <h4 className="footer-heading">Contact Us</h4>
           <ul>
-            <li>Helpdesk: 7340557555</li>
-            <li>Timing: 9:30 AM – 6:00 PM</li>
-            <li>Email: <a href="mailto:recruitmenthelpdesk@rajasthan.gov.in" className='footer-email' >recruitmenthelpdesk@rajasthan.gov.in</a></li>
+            <li>{Language[currentLang].helpdesk}: 7340557555</li>
+            <li>{Language[currentLang].Timing}: 9:30 AM – 6:00 PM</li>
+            <li>{Language[currentLang].Email}: <a href="mailto:recruitmenthelpdesk@rajasthan.gov.in" className='footer-email' >recruitmenthelpdesk@rajasthan.gov.in</a></li>
           </ul>
         </div>
 

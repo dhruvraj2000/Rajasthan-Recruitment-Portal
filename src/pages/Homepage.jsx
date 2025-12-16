@@ -3,7 +3,7 @@ import { Card, Row } from "antd";
 import { motion } from "framer-motion";
 import { Users, FileCheck, Briefcase, ArrowRight, Bell } from "lucide-react";
 import Sectionlabel from "../components/Sectionlabel";
-
+import Language from "../data/Language";
 import AnimatedStat from "../components/stats/AnimatedStat";
 import CustomButton from "../components/Button";
 import CustomTabs from "../components/Tabs";
@@ -19,12 +19,12 @@ import {
   SkeletonSquare,
 } from "../components/SkeletonComponent";
 
-const HomePage = () => {
+const HomePage = ({currentLang}) => {
   const [theme, setTheme] = useState("theme-blue");
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000);
+    const timer = setTimeout(() => setLoading(false), 500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -53,43 +53,65 @@ const HomePage = () => {
     ],
   };
 
-  const stepsData = [
-    {
-      heading: "Registration",
-      sub: "Initial Registration Stage for All Applicants",
-    },
-    {
-      heading: "Advertisement",
-      sub: "Official Release of Recruitment Notification",
-    },
-    {
-      heading: "Application",
-      sub: "Student Application Entry & Verification Phase",
-    },
-    {
-      heading: "Admit Card",
-      sub: "Admit Card Release & Exam Details Notification",
-    },
-    { heading: "Examination", sub: "Eligibility-Based Examination Stage" },
-    { heading: "Answer Key", sub: "Provisional Answer Key & Objection Window" },
-    {
-      heading: "Provisional Shortlist",
-      sub: "Names of Shortlisted Candidates",
-    },
-    { heading: "Verify Document", sub: "DigiLocker-based Document Check" },
-    { heading: "Result", sub: "Final Merit List Announcement" },
-    {
-      heading: "Preference Based Service Allocation",
-      sub: "Candidate Service Preference Stage (If Any)",
-    },
-    { heading: "Recommendations", sub: "Candidate Recommendation Stage" },
-    { heading: "Medical Test", sub: "Health Screening for Final Selection" },
-    { heading: "Police verification", sub: "Police Clearance for Appointment" },
-    {
-      heading: "Appointment And Posting",
-      sub: "Issuance of Appointment Order and Joining and Assignment to Post",
-    },
-  ];
+const stepsData = [
+  {
+    heading: Language[currentLang].heading1,
+    sub: Language[currentLang].step1,
+  },
+  {
+    heading: Language[currentLang].heading2,
+    sub: Language[currentLang].step2,
+  },
+  {
+    heading: Language[currentLang].heading3,
+    sub: Language[currentLang].step3,
+  },
+  {
+    heading: Language[currentLang].heading4,
+    sub: Language[currentLang].step4,
+  },
+  {
+    heading: Language[currentLang].heading5,
+    sub: Language[currentLang].step5,
+  },
+  {
+    heading: Language[currentLang].heading6,
+    sub: Language[currentLang].step6,
+  },
+  {
+    heading: Language[currentLang].heading7,
+    sub: Language[currentLang].step7,
+  },
+  {
+    heading: Language[currentLang].heading8,
+    sub: Language[currentLang].step8,
+  },
+  {
+    heading: Language[currentLang].heading9,
+    sub: Language[currentLang].step9,
+  },
+  {
+    heading: Language[currentLang].heading10,
+    sub: Language[currentLang].step10, // FIXED
+  },
+  {
+    heading: Language[currentLang].heading11,
+    sub: Language[currentLang].step11,
+  },
+  {
+    heading: Language[currentLang].heading12,
+    sub: Language[currentLang].step12,
+  },
+  {
+    heading: Language[currentLang].heading13,
+    sub: Language[currentLang].step13,
+  },
+  {
+    heading: Language[currentLang].heading14,
+    sub: Language[currentLang].step14,
+  },
+];
+
 
   const jobs = [
     {
@@ -148,23 +170,24 @@ const HomePage = () => {
     },
   ];
 
-  const noticeTabs = [
-    {
-      key: "1",
-      label: "Notifications",
-      children: <p>Latest updates and alerts.</p>,
-    },
-    {
-      key: "2",
-      label: "Recruitments",
-      children: <p>Active job recruitments.</p>,
-    },
-    {
-      key: "3",
-      label: "Student Updates",
-      children: <p>Important student information.</p>,
-    },
-  ];
+const noticeTabs = [
+  {
+    key: "1",
+    label: Language[currentLang].notification,
+    children: <p>Latest updates and alerts.</p>,
+  },
+  {
+    key: "2",
+    label: Language[currentLang].recruitments,
+    children: <p>Active job recruitments.</p>,
+  },
+  {
+    key: "3",
+    label: Language[currentLang].studentUpdates,
+    children: <p>Important student information.</p>,
+  },
+];
+
 
   return (
     <div className={`app-wrapper ${theme}`}>
@@ -222,41 +245,39 @@ const HomePage = () => {
             ) : (
               <>
                 <h3 className="info-title">
-                  Your Gateway to Government Jobs in Rajasthan
+                  {Language[currentLang].guide1}
                 </h3>
 
                 <p className="info-desc">
-                  Rajasthan Recruitment Portal is a unified portal for various
-                  recruitments in the state of Rajasthan.
+                 {Language[currentLang].heading}
                 </p>
 
                 <ul className="blue-pulse-list">
                   <li>
-                    One-time registration system for candidates through single
-                    sign-on
+                    {Language[currentLang].instruction1}
                   </li>
-                  <li>Integration with Aadhaar, Jan-Aadhar and Employee ID</li>
+                  <li>{Language[currentLang].instruction2}</li>
                   <li>
-                    Informational coordination from advertisement to application
-                  </li>
-                  <li>
-                    Coordination between departments and recruitment institutes
+                   {Language[currentLang].instruction3}
                   </li>
                   <li>
-                    Updates via dashboard, email, SMS, WhatsApp & social media
+                   {Language[currentLang].instruction4}
                   </li>
                   <li>
-                    DigiLocker & e-Vault integration for document authentication
+                    {Language[currentLang].instruction5}
                   </li>
                   <li>
-                    Analytical presentation of information and achievements
+                   {Language[currentLang].instruction6}
+                  </li>
+                  <li>
+                   {Language[currentLang].instruction7}
                   </li>
                 </ul>
 
                 <div className="text-center start-one-time-btn">
                   <CustomButton
                     type="primary"
-                    buttontext="Start One Time Registration"
+                    buttontext={Language[currentLang].otrButton}
                     classname="primary-btn"
                   />
                 </div>
@@ -273,7 +294,7 @@ const HomePage = () => {
             ) : (
               <>
                 <h3 className="notice-title">
-                  <Bell className="notice-icon" /> Notice Board
+                  <Bell className="notice-icon" /> {Language[currentLang].noticeBoard}
                 </h3>
                 <CustomTabs defaultActiveKey="1" items={noticeTabs} />
               </>
@@ -283,8 +304,8 @@ const HomePage = () => {
 
         <section className="section-block">
           <Sectionlabel
-            labeltext="Stages of the"
-            sublabeltext="Examination Life Cycle"
+            labeltext={Language[currentLang].stagesStep}
+            sublabeltext={Language[currentLang].sublabeltext}
           />
 
           <div className="steps-grid">
@@ -305,7 +326,7 @@ const HomePage = () => {
                       <div className="step-number">
                         {String(i + 1).padStart(2, "0")}
                       </div>
-                      <div className="step-text">STEP</div>
+                      <div className="step-text">{Language[currentLang].step}</div>
                     </Card>
 
                     <div className="step-description">
@@ -319,8 +340,8 @@ const HomePage = () => {
 
         <section className="section-block ">
           <Sectionlabel
-            labeltext="Department Wise"
-            sublabeltext="Submitted Application"
+            labeltext={Language[currentLang].departmentWise}
+            sublabeltext={Language[currentLang].submittedApplication}
           />
 
           <div className="dept-grid">
@@ -353,7 +374,7 @@ const HomePage = () => {
         </section>
 
         <section className="section-block">
-          <Sectionlabel labeltext="Job" sublabeltext="Openings" />
+          <Sectionlabel labeltext={Language[currentLang].job} sublabeltext={Language[currentLang].opening} />
 
           <div className="job-list">
             {loading
@@ -391,7 +412,7 @@ const HomePage = () => {
 
                         <CustomButton
                           type="default"
-                          buttontext="Apply"
+                          buttontext={Language[currentLang].applyBtn}
                           classname="outline-btn"
                           icons={<ArrowRight />}
                         />
@@ -407,7 +428,7 @@ const HomePage = () => {
         </section>
 
         <section className="section-block">
-          <Sectionlabel labeltext="Official" sublabeltext="Stakeholders" />
+          <Sectionlabel labeltext={Language[currentLang].official} sublabeltext={Language[currentLang].swtakeholders} />
 
           <Slider {...settings} className="stakeholder-slider">
             {loading

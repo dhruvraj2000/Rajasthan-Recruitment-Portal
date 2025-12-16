@@ -1,7 +1,8 @@
 import React from "react";
+import Language from "../data/Language";
 import { Row, Col } from "antd";
 
-const ThemeNavigation = () => {
+const ThemeNavigation = ({ currentLang }) => {
   return (
     <div className="topbar d-flex align-items-center py-1">
       <div className="container-fluid container-space">
@@ -31,7 +32,7 @@ const ThemeNavigation = () => {
             <div className="access-container d-flex align-items-center justify-content-end">
               <div id="access-icons" className="d-flex align-items-center">
                 <a className="cursor-p me-3" style={{marginLeft:760}} onClick={() => window.getScreenReader?.()}>
-                  Screen Reader Access
+                  {Language[currentLang].screenReaderAccess}
                 </a>
 
                 <a href="#" id="increaseFont" className="me-2">
@@ -51,7 +52,7 @@ const ThemeNavigation = () => {
                 </a>
 
                 <a href="#examLifeCycle" id="skip" className="me-3">
-                  Skip to content
+                  {Language[currentLang].skipContent}
                 </a>
               </div>
             </div>
