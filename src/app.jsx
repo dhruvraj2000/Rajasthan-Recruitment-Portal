@@ -18,23 +18,23 @@ import Language from "./data/Language.jsx";
 export default function App() {
   const [currentLang, setCurrentLang] = useState("en");
 
-  const [theme, setTheme] = useState("theme-blue");
+  const [theme, setTheme] = useState("theme-blue");s
 
   return (
     <div className={`app-wrapper ${theme}`}>
       <BrowserRouter>
         <ThemeSwitcher setTheme={setTheme} />
-        <ThemeNavigation currentLang={currentLang}/>
+        <ThemeNavigation  currentLang={currentLang} setCurrentLang={setCurrentLang}/>
         <Header currentLang={currentLang} setCurrentLang={setCurrentLang} />
         <Navbar currentLang={currentLang}/>
         <main style={{ minHeight: "80vh" }}>
           <div className="main-content">
             <Routes>
-              <Route path="/" element={<HomePage  currentLang={currentLang}/>} />
-              <Route path="/ssoid" element={<Ssoid currentLang={currentLang} />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/ssoid" element={<Ssoid />} />
               <Route path="/Admitcard"element={<Admitcard currentLang={currentLang}  />}/>
-              <Route path="/results" element={<Results currentLang={currentLang}  />} />
-              <Route path="/faq" element={<FAQs currentLang={currentLang}  />} />
+              <Route path="/results" element={<Results />} />
+              <Route path="/faq" element={<FAQs />} />
             </Routes>
           </div>
         </main>

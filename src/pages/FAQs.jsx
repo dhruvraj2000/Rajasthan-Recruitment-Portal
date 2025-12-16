@@ -302,9 +302,11 @@ const Frequentlyquestions = ({ currentLang }) => {
   return (
     <div className="faq-container">
       <div className="header-actions">
-        <div className="headerbackground header-login-btn">
+
+        <div className="headerbackground header-login-btn faq-top-header">
           <h1>{Language[currentLang].faqQues}</h1>
           <p>{Language[currentLang].faqAnsw}</p>
+
 
           <div className="search-container">
             <div className="search-box">

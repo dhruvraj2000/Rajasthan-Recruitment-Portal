@@ -28,30 +28,44 @@ const HomePage = ({currentLang}) => {
     return () => clearTimeout(timer);
   }, []);
 
-  const settings = {
-    arrows: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1, // scroll one by one for smooth loop
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
+const settings = {
+  arrows: false,
+  autoplay: true,
+  infinite: true,
+  speed: 200,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  initialSlide: 0,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true,
       },
-      {
-        breakpoint: 600,
-        settings: { slidesToShow: 2, slidesToScroll: 2, initialSlide: 2 },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        initialSlide: 0,
       },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
-    ],
-  };
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+      },
+    },
+  ],
+};
+
 
 const stepsData = [
   {
@@ -310,7 +324,7 @@ const noticeTabs = [
 
           <div className="steps-grid">
             {loading
-              ? [...Array(14)].map((_, i) => (
+              ? [...Array(4)].map((_, i) => (
                   <Card className="step-card" key={i}>
                     <SkeletonLine width="40%" />
                     <SkeletonLine width="60%" />

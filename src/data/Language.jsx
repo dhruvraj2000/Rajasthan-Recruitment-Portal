@@ -17,7 +17,7 @@ const Language = {
     resultDropDown: "Select Exam Type",
     applicationPlaceholder: "Enter Application No.",
     dobPlacerholder: "Enter Date of Birth",
-    captcha: "CAPTCHA",
+    captcha: "Captcha",
     captchaplaceholder: "Enter captcha",
     dropdownPlaceholder: "Select an option",
     generalHeading: "Activated/Deactivated OTR Profile related FAQs",
