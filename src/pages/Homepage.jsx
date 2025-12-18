@@ -19,8 +19,8 @@ import {
   SkeletonSquare,
 } from "../components/SkeletonComponent";
 
-const HomePage = ({currentLang}) => {
-  const [theme, setTheme] = useState("theme-blue");
+const HomePage = ({currentLang,}) => {
+
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -204,7 +204,7 @@ const noticeTabs = [
 
 
   return (
-    <div className={`app-wrapper ${theme}`}>
+    <div className="app-wrapper">
       <div>
         <section className="stats-grid">
           {loading ? (
