@@ -27,7 +27,7 @@ export default function App() {
       {/* <ThemeSwitcher setTheme={setTheme} /> */}
         <ThemeNavigation  currentLang={currentLang} setCurrentLang={setCurrentLang} setTheme={setTheme}/>
         <Header currentLang={currentLang} setCurrentLang={setCurrentLang}  setTheme={setTheme}/>
-        <Navbar currentLang={currentLang}/>
+        <Navbar currentLang={currentLang} setCurrentLang={setCurrentLang} />
         <main style={{ minHeight: "80vh" }}>
           <div className="main-content">
             <Routes>
