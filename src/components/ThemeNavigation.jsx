@@ -4,6 +4,7 @@ import { Row, Col } from "antd";
 import languageicon from "../assets/Svg/language.svg"
 import ThemeSwitcher from "./ThemeSwitcher";
 
+
 const ThemeNavigation = ({currentLang, setCurrentLang,setTheme }) => {
   return (
     <div className="topbar d-flex align-items-center py-1">

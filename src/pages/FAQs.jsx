@@ -17,6 +17,9 @@ import pOtrPic1 from "../assets/Svg/pOtrPic1.png";
 import CET_ques2 from "../assets/Svg/CET_ques2.png";
 import FAQCollapse from "../components/FAQCollapse";
 import Language from "../data/Language";
+
+
+
 const Frequentlyquestions = ({ currentLang }) => {
   const [activeSection, setActiveSection] = useState("general");
   const [language, setLanguage] = useState("en");
@@ -302,6 +305,7 @@ const Frequentlyquestions = ({ currentLang }) => {
   return (
     <div className="faq-container">
       <div className="header-actions">
+
 
         <div className="headerbackground header-login-btn faq-top-header">
           <h1>{Language[currentLang].faqQues}</h1>
