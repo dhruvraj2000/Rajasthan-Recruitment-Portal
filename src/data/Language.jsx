@@ -46,7 +46,7 @@ const Language = {
     scrutinyDetails: "Scrutiny details",
     helplineHeading: "Helpline",
     supportHelpline: "Support & helpline",
-    viewDetails: "View Details",
+    viewDetails: "Click Here",
     otrButton: "Start One Time Registration",
     stagesStep: "Stages of the",
     sublabeltext: "Examination Life Cycle",

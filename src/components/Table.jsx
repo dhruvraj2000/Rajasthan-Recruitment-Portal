@@ -1,23 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React from 'react';
 import { Table, Space, } from 'antd';
 import Button from "../components/Button";
 import Language from '../data/Language';
-import LogoLoader from "../components/LogoLoader";
+import { SkeletonButton, SkeletonInput, SkeletonLine } from './SkeletonComponent';
+import { useEffect, useState } from 'react';
+import SkeletonAvatar from 'antd/es/skeleton/Avatar';
+import SkeletonImage from 'antd/es/skeleton/Image';
 
 
 const TableComponent = ({ searchText, currentLang }) => {
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+
+
+const handlePageChange = (page) => {
+  setCurrentPage(page);
+  setLoading(true); 
+
+  setTimeout(() => {
+    setLoading(false); 
+  }, 3000);
+};
+
 
   useEffect(() => {
-   
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-
+    const timer = setTimeout(() => setLoading(false), 3000);
     return () => clearTimeout(timer);
   }, []);
 
-const columns = [
+  const columns = [
   {
     title:( <span  className="header-light-blue" style={{ fontWeight: "700", fontSize: "18px" }}>
        {Language[currentLang]?.admitcard || "Admit Card"}
@@ -25,40 +36,40 @@ const columns = [
     ),
     dataIndex: 'admitcard',
     key: 'admitcard',
+render: (text, record) => {
+  if (loading) {
+    return (
+      <div style={{ display: "flex", gap: "10px" }}>
+        <SkeletonAvatar active size="small" />
+        <SkeletonInput active />
+      </div>
+    );
+  }
 
-    render: (text, record) => {
-      const before = text.split("(")[0];
-      const inside = text.match(/\(([^)]+)\)/)?.[1];
+  const before = text.split("(")[0];
+  const inside = text.match(/\(([^)]+)\)/)?.[1];
 
-      return (
-
-
- <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-
-      
-        {record.img && (
-          <img 
-            src={record.img} 
-            alt="logo"
-            style={{ width: "35px", height: "35px", objectFit: "contain" }}
-          />
-        )}
-
-
-        
-        <div>
-          {before}
-          {inside && <b> ({inside})</b>}
-        </div>
-        </div>
-   );
-    
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+      {record.img && (
+        <img
+          src={record.img}
+          alt="logo"
+          style={{ width: "35px", height: "35px" }}
+        />
+      )}
+      <div>
+        {before}
+        {inside && <b> ({inside})</b>}
+      </div>
+    </div>
+  );
 }
   },
 
   {
   title: ( <span className="header-light-blue" style={{ fontWeight: "700", fontSize: "18px" }}>
-    {Language[currentLang]?.action || "Action"}
+   {Language[currentLang]?.action || "Action"}
   </span>
   ),
   key: 'action',
@@ -66,21 +77,30 @@ const columns = [
     <Space size="middle" direction="vertical">
 
         <div className='header-actions'>
-      <Button 
-        type="primary"
-       buttontext={Language[currentLang]?.getAdmit || "Get Admit Card"}
-
-        classname="my-admit-btn  header-login-btn"
-      />
+          {loading? (
+            <SkeletonButton/>
+          ):(
+            <Button 
+            type="primary"
+            buttontext={Language[currentLang]?.getAdmit || "Get Admit Card"}
+            
+            classname="my-admit-btn  header-login-btn"
+            />
+          )}
 
 
       {record.hasCenterMap === true && (
-          <Button 
-          type="primary"
-          classname="my-center-btn  header-login-btn"
-          buttontext={Language[currentLang].getCenter || "Get Admit Card"}
-          />
-        )}  
+        loading ?(
+          <SkeletonButton/>
+
+        ):(
+        <Button 
+        type="primary"
+        classname="my-center-btn  header-login-btn"
+        buttontext={Language[currentLang]?.getCenter || "Get Center Map"}
+        />
+        )
+      )}  
 
         </div>
     </Space>
@@ -88,13 +108,16 @@ const columns = [
 },
 
 ];
+
 const data = [
-  {
-    key: '1',
-    admitcard: 'LAB ATTENDANT DIRECT RECRUITMENT 2025 (RSSB)',
-    hasCenterMap: true,
-    img : "/1.png",
-  },
+
+  
+    {
+      key: '1',
+      admitcard: 'LAB ATTENDANT DIRECT RECRUITMENT 2025 (RSSB)',
+      hasCenterMap: true,
+      img : "/1.png",
+    },
   {
     key: '2',
     admitcard: 'EX SERVICEMAN (RPSC)',
@@ -272,28 +295,37 @@ const data = [
     key: '35',
     admitcard: 'Direct Recruitment of Para Medical cader Lab Technician and Assistant Radiographer -2020 (RSSB)',
     img : "/1.png",
+  
+    
   },
-
 
 
 ];
 
-const filteredData = data.filter((item) => 
- item.admitcard.toLowerCase().includes(searchText.toLowerCase()) );
+  const skeletonData = Array.from({ length: 5 }).map((_, i) => ({
+  key: `skeleton-${i}`,
+  admitcard: <SkeletonInput />,
+  img: <SkeletonImage />,
+}));
+  
 
+const filteredData = data.filter((item) =>
+  item.admitcard.toLowerCase().includes(searchText.toLowerCase())
+);
 
 return (
-  <>
-    {loading && <LogoLoader />}
-
-    <Table
-      columns={columns}
-      dataSource={filteredData}
-      pagination={{ pageSize: 10 }}
-      className="custom-table"
-    />
-  </>
-);
+  <Table
+  columns={columns}
+  dataSource={filteredData}
+  pagination={{
+    current: currentPage,
+    pageSize: 10,
+    onChange: handlePageChange,
+  }}
+    
+  className="custom-table"
+/>
+  );
 };
 
 export default TableComponent;

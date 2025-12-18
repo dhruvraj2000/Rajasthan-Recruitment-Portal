@@ -1,8 +1,18 @@
 import React from 'react'
 import Language from "../data/Language";
+
 export default function Footer({ currentLang }){
   return (
+
+  
+  <div>
+
     <footer className="footer-container">
+<div className="footer-blue-wrapper">
+  <div className="footer-blue-strip"></div>
+
+
+    </div>
       <div className="footer-grid">
         <div class="footer1">
           <img src='withouttextlogo.svg' />
@@ -42,5 +52,7 @@ export default function Footer({ currentLang }){
 
       <div className="footer-copy">© 2025 RSRP Portal. All Rights Reserved.</div>
     </footer>
+    </div>
+      
   )
 }

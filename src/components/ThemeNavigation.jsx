@@ -3,6 +3,8 @@ import Language from "../data/Language";
 import { Row, Col } from "antd";
 import languageicon from "../assets/Svg/language.svg"
 import ThemeSwitcher from "./ThemeSwitcher";
+import { color } from "framer-motion";
+
 
 const ThemeNavigation = ({currentLang, setCurrentLang,setTheme }) => {
   return (
