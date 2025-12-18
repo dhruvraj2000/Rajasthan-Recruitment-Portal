@@ -2,8 +2,9 @@ import React from "react";
 import Language from "../data/Language";
 import { Row, Col } from "antd";
 import languageicon from "../assets/Svg/language.svg"
+import ThemeSwitcher from "./ThemeSwitcher";
 
-const ThemeNavigation = ({currentLang, setCurrentLang}) => {
+const ThemeNavigation = ({currentLang, setCurrentLang,setTheme }) => {
   return (
     <div className="topbar d-flex align-items-center py-1">
       <div className="container-fluid container-space">
@@ -34,8 +35,8 @@ const ThemeNavigation = ({currentLang, setCurrentLang}) => {
                 <a className="cursor-p me-3"  onClick={() => window.getScreenReader?.()}>
                   Screen Reader Access
                 </a>
-
-                <a href="#" id="increaseFont" className="me-2">
+            <ThemeSwitcher setTheme={ setTheme } />
+            <a href="#" id="increaseFont" className="me-2">
                   A<sup>+</sup>
                 </a>
 
@@ -46,7 +47,7 @@ const ThemeNavigation = ({currentLang, setCurrentLang}) => {
                 <a href="#" id="decreaseFont" className="me-2">
                   A<sup>-</sup>
                 </a>
- 
+
    <a onClick={() => setCurrentLang(currentLang === "en" ? "hi" : "en")}>
                 <img src={languageicon} alt="language icon" className="language-icon"/>
               </a>
