@@ -2,7 +2,10 @@ import React from "react";
 
 export default function ThemeSwitcher({ setTheme }) {
   return (
-    <div className="theme-switcher  gap-2" style={ { marginRight: "5px", marginLeft: "5px"}}>
+    <div
+      className="theme-switcher  gap-2"
+      style={{ marginRight: "5px", marginLeft: "5px" }}
+    >
       <a
         type="button"
         onClick={() => setTheme("theme-blue")}

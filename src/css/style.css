@@ -327,29 +327,35 @@ button:hover {
 }
 
 .steps-grid>div:nth-child(odd) .step-card {
-    padding: 40px;
+
     border-radius: 100%;
     background: var(--card-bg);
     border: 1.3rem solid #E4A321;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 140px;
+     margin: auto;
 
 }
 
 .steps-grid>div:nth-child(even) .step-card {
-    padding: 40px;
+
     border-radius: 100%;
     background: var(--card-bg);
     border: 1.3rem solid #F97549;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-width: 180px;
-    height: 180px;
+ width: 140px;
+    height: 140px;
+    margin: auto;
 
 }
-
+.steps-grid .ant-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .step-card {
     transition: all 0.3s ease;
 
@@ -488,7 +494,7 @@ width: 180px;
     background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.98));
     color: #e6eef8;
     padding: 28px 20px;
-    
+
 }
 
 .footer-grid {
