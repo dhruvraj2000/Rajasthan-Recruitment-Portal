@@ -7,6 +7,9 @@
 :root {
     --radius: 16px;
 }
+a{
+    cursor: pointer;
+}
 
 h1,
 h2,
@@ -128,15 +131,17 @@ button:hover {
 
 /* Theme Switcher */
 .theme-switcher {
-    position: fixed;
-    right: 20px;
-    top: 90px;
+
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 60;
+
+    gap: 6px;
+
 }
 
+#access-icons{
+    display: flex;
+   flex-wrap: wrap;
+}
 @media(max-width:640px) {
     .theme-switcher {
         right: 10px;
@@ -1292,7 +1297,7 @@ font-size: 0.9rem;
 
 /*edit by gaurang*/
  .admitcard-container  {
-       
+
         width: 100%;
         margin: 0 auto;
 
@@ -1302,7 +1307,7 @@ font-size: 0.9rem;
 
 /*edit by gaurang*/
 .table-box {
- 
+
   position: relative;
   margin: 0 auto;
   background: #ffffff;
@@ -1517,4 +1522,9 @@ margin-bottom: 20px;
     transform: scale(1);
     opacity: 0.7;
   }
+}
+.language-icon{
+
+filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg)
+          brightness(100%) contrast(100%);
 }
