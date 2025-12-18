@@ -1,42 +1,39 @@
 import React from "react";
 import { Menu } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Language from "../data/Language";
 
-const LeftMenu = ({ mode, currentLang  }) => {
+const LeftMenu = ({ mode, currentLang = "en" }) => {
+  const lang = Language[currentLang] || Language.en;
+  const location = useLocation();
+
+  
+  const pathKeyMap = {
+    "/": "home",
+    "/Ssoid": "sso",
+    "/Admitcard": "admitcard",
+    "/results": "result",
+    "/faq": "faq",
+  };
+
+  const selectedKey = pathKeyMap[location.pathname];
+
   const items = [
-    {
-      key: "home",
-      label: <Link to="/">{Language[currentLang].home}</Link>,
-    },
-    {
-      key: "sso",
-      label: <Link to="/Ssoid">{Language[currentLang].ssoid}</Link>,
-    },
-    {
-      key: "admitcard",
-      label: <Link to="/Admitcard">{Language[currentLang].admitcard}</Link>,
-    },
-    {
-      key: "result",
-      label: <Link to="/results">{Language[currentLang].result}</Link>,
-    },
-    {
-      key: "faq",
-      label: <Link to="/faq">{Language[currentLang].faqs}</Link>,
-    },
+    { key: "home", label: <Link to="/">{lang.home}</Link> },
+    { key: "sso", label: <Link to="/Ssoid">{lang.ssoid}</Link> },
+    { key: "admitcard", label: <Link to="/Admitcard">{lang.admitcard}</Link> },
+    { key: "result", label: <Link to="/results">{lang.result}</Link> },
+    { key: "faq", label: <Link to="/faq">{lang.faqs}</Link> },
   ];
 
   return (
     <Menu
       mode={mode}
       items={items}
+      selectedKeys={[selectedKey]}
       overflowedIndicator={null}
-      disabledOverflow={true}
-      style={{
-        border: "none",
-        fontSize: "16px",
-      }}
+      disabledOverflow
+      style={{ border: "none", fontSize: "16px" }}
     />
   );
 };

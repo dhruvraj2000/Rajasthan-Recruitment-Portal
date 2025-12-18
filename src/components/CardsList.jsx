@@ -12,16 +12,20 @@ const CardsList = ({ card, activeSection, setActiveSection, currentLang }) => {
 
       <div className="card-title">{card.title}</div>
       <p className="card-desc header-actions">{card.desc}</p>
-      <div className="header-actions">
-      <CustomButton
-        type="primary"
-        buttontext={Language[currentLang].viewDetails}
-        classname="view-btn card-btn header-login-btn" 
-      />
-     </div>
 
-     </div>
+      {/* ✅ Dynamic Button */}
+      {card.button?.show && (
+        <div className="header-actions">
+          <CustomButton
+            type={card.button.type || "primary"}
+            buttontext={card.button.text}
+            classname="view-btn card-btn header-login-btn"
+          />
+        </div>
+      )}
+    </div>
   );
 };
+  
 
 export default CardsList;
