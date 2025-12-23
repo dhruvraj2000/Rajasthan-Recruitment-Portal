@@ -8,7 +8,7 @@ const CardsList = ({ card, activeSection, setActiveSection, currentLang }) => {
       className={`card ${activeSection === card.id ? "active" : ""}`}
       onClick={() => setActiveSection(card.id)}
     >
-      <img src={card.img} alt="" className="card-icon" />
+      <img src={card.img} alt={card.title} className="card-icon" />
 
       <div className="card-title">{card.title}</div>
       <p className="card-desc header-actions">{card.desc}</p>
@@ -26,6 +26,6 @@ const CardsList = ({ card, activeSection, setActiveSection, currentLang }) => {
     </div>
   );
 };
-  
+
 
 export default CardsList;

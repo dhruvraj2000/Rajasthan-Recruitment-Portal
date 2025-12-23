@@ -22,10 +22,10 @@ export default function App() {
   const [theme, setTheme] = useState("theme-blue");
 
   return (
-    <div className={`app-wrapper ${theme}`}>
+    <div id="main-content" tabIndex="-1"  className={`app-wrapper ${theme}`}>
       <BrowserRouter>
       {/* <ThemeSwitcher setTheme={setTheme} /> */}
-        <ThemeNavigation  currentLang={currentLang} setCurrentLang={setCurrentLang} setTheme={setTheme}/>
+        <ThemeNavigation  currentLang={currentLang} setCurrentLang={setCurrentLang} setTheme={setTheme}  />
         <Header currentLang={currentLang} setCurrentLang={setCurrentLang}  setTheme={setTheme}/>
         <Navbar currentLang={currentLang} setCurrentLang={setCurrentLang} />
         <main style={{ minHeight: "80vh" }}>

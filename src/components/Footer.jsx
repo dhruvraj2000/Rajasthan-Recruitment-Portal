@@ -4,7 +4,7 @@ import Language from "../data/Language";
 export default function Footer({ currentLang }){
   return (
 
-  
+
   <div>
 
     <footer className="footer-container">
@@ -15,7 +15,7 @@ export default function Footer({ currentLang }){
     </div>
       <div className="footer-grid">
         <div class="footer1">
-          <img src='withouttextlogo.svg' />
+          <img alt='State Recruitment Portal logo' src='withouttextlogo.svg' />
           <p className='footer-img-header'>State Recruitment Portal</p>
         </div>
         <div>
@@ -53,6 +53,6 @@ export default function Footer({ currentLang }){
       <div className="footer-copy">© 2025 RSRP Portal. All Rights Reserved.</div>
     </footer>
     </div>
-      
+
   )
 }
