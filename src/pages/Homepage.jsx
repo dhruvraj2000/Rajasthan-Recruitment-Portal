@@ -129,56 +129,66 @@ const stepsData = [
 
   const jobs = [
     {
-      icon: <img src="1.png" />,
+      icon: <img src="1.png"  alt="Jamadar Grade II logo"/>,
+
       jobs: "Jamadar Grade II 2024,",
       sub: "RPSC",
       date: "12-Dec-2024",
     },
     {
-      icon: <img src="2.png" />,
+      icon: <img src="2.png" alt="Statistical Officer logo"/>,
       jobs: "Statistical Officer 2025",
       sub: "RSSB",
       date: "12-Dec-2024",
     },
     {
-      icon: <img src="2.png" />,
+      icon: <img src="2.png" alt="Primary Teacher logo"/>,
       jobs: "Primary Teacher 2025",
       sub: "RPSC",
       date: "12-Dec-2024",
     },
   ];
-
-  const stakeholders = [
-    { icon: <img src="1.png" />, name: "ICFRE-Arid Forest Research Institute" },
-    { icon: <img src="2.png" />, name: "National Health Mission, Rajasthan" },
-    {
-      icon: <img src="3.png" />,
-      name: "Department of Sanskrit Education, Govt. of Rajasthan",
-    },
-    {
-      icon: <img src="4.png" />,
-      name: "Directorate Police Telecommunication, Rajasthan",
-    },
-    {
-      icon: <img src="1.png" />,
-      name: "Rajasthan State Pollution Control Board",
-    },
-  ];
+const stakeholders = [
+  {
+    icon: <img src="/images/ICFRE-Arid-Forest-Research-Institute.png" alt="ICFRE Arid Forest Research Institute logo" />,
+    name: "ICFRE-Arid Forest Research Institute",
+  },
+  {
+    icon: <img src="/1.png" alt="ICFRE Arid Forest Research Institute logo" />,
+    name: "ICFRE-Arid Forest Research Institute",
+  },
+  {
+    icon: <img src="/2.png" alt="National Health Mission Rajasthan logo" />,
+    name: "National Health Mission, Rajasthan",
+  },
+  {
+    icon: <img src="3.png" alt="Department of Sanskrit Education Rajasthan logo" />,
+    name: "Department of Sanskrit Education, Govt. of Rajasthan",
+  },
+  {
+    icon: <img src="4.png" alt="Directorate Police Telecommunication Rajasthan logo" />,
+    name: "Directorate Police Telecommunication, Rajasthan",
+  },
+  {
+    icon: <img src="1.png" alt="Rajasthan State Pollution Control Board logo" />,
+    name: "Rajasthan State Pollution Control Board",
+  },
+];
 
   const departmentStats = [
     {
-      icon: <img src="1.png" />,
+      icon: <img src="1.png" alt="Staff Selection Board logo"/>,
       dept: "Staff Selection Board",
       count: "27,35,2369",
     },
     {
-      icon: <img src="2.png" />,
+      icon: <img src="2.png" alt="Public Service Commission logo"/>,
       dept: "Public Service Commission",
       count: "15,46,5925",
     },
-    { icon: <img src="3.png" />, dept: "Rajasthan Police", count: "92,864" },
+    { icon: <img src="3.png" alt="Rajasthan Police logo"/>, dept: "Rajasthan Police", count: "92,864" },
     {
-      icon: <img src="4.png" />,
+      icon: <img src="4.png" alt="Other Departments logo"/>,
       dept: "Other Departments",
       count: "51,22,274",
     },
@@ -419,10 +429,10 @@ const noticeTabs = [
                       <div className="job-card-inner">
                         <div className="job-title-img">{job.icon}</div>
 
-                        <div className="job-title">
-                          <p>{job.jobs}</p>
-                          <label>{job.sub}</label>
-                        </div>
+                  <div className="job-title">
+  <p className="job-name">{job.jobs}</p>
+  <span className="job-subtitle">{job.sub}</span>
+</div>
 
                         <CustomButton
                           type="default"
