@@ -62,7 +62,7 @@ render: (text, record) => {
         {before}
         {inside && <b> ({inside})</b>}
       </div>
-    </div>
+    </div>  
   );
 }
   },
