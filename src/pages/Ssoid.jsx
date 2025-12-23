@@ -78,8 +78,20 @@ const Ssoid = ({ currentLang }) => {
                           required: true,
                           message: "Please enter application number!",
                         },
-                      ]}
-                    >
+                  {
+                    validator: (_,value) =>{
+                      if(!value) return Promise.resolve();
+
+                      if(!/^\d+$/.test(value)){
+                        return Promise.reject(
+                          new Error("Only numbers are allowed!")
+                        );
+                      }
+                      return Promise.resolve();
+                    },
+                  },
+                ]}
+                >
                       <CustomInput
                         placeholder={
                           Language[currentLang].applicationPlaceholder
