@@ -225,22 +225,22 @@ const noticeTabs = [
           ) : (
             <>
               <AnimatedStat
-                title="One Time Registration"
+                title= {Language[currentLang].oneTimeRegistration}
                 value="56,90,391"
                 icon={<Users />}
               />
               <AnimatedStat
-                title="Recruitments Published"
+                title={Language[currentLang].recruitmentsPublished}
                 value="268"
                 icon={<FileCheck />}
               />
               <AnimatedStat
-                title="Employment Created"
+                title={Language[currentLang].employmentCreated}
                 value="5,73,868"
                 icon={<Briefcase />}
               />
               <AnimatedStat
-                title="Applications Submitted"
+                title={Language[currentLang].applicationsSubmitted}
                 value="4,80,33,432"
                 icon={<FileCheck />}
               />
