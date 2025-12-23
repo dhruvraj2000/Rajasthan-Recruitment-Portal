@@ -6,7 +6,7 @@ const Language = {
     oneTimeRegistration: "One Time Registration",
     recruitmentsPublished: "Recruitments Published",
     employmentCreated: "Employment Created",
-    applicationsSubmitted: "आवेदन प्रस्तुत किये गये",
+    applicationsSubmitted: "Applications Submitted",
     home: "Home",
     action: "Action",
     getAdmit: "Get Admit Card",
