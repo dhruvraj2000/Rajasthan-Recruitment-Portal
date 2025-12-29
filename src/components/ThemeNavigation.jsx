@@ -59,7 +59,7 @@ const ThemeNavigation = ({currentLang, setCurrentLang,setTheme,href }) => {
                   <i className="bi bi-circle-half"></i>
                 </a>
 
-               <a href="#" className="skip-link">
+               <a href="" className="skip-link">
                 {Language[currentLang]?.skipContent || "Skip to main content"}
               </a>
               </div>

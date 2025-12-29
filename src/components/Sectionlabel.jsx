@@ -5,7 +5,7 @@ const Sectionlabel = ({ labeltext, sublabeltext }) => {
     <div class="Section-label">
       <h2 className="section-title text-3xl font-semibold text-center mb-8">
         {labeltext}
-        <label className="sublabel-text">{sublabeltext}</label>
+        <span className="sublabel-text">{sublabeltext}</span>
       </h2>
     </div>
   );

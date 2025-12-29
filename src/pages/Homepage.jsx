@@ -149,10 +149,7 @@ const stepsData = [
     },
   ];
 const stakeholders = [
-  {
-    icon: <img src="/images/ICFRE-Arid-Forest-Research-Institute.png" alt="ICFRE Arid Forest Research Institute logo" />,
-    name: "ICFRE-Arid Forest Research Institute",
-  },
+
   {
     icon: <img src="/1.png" alt="ICFRE Arid Forest Research Institute logo" />,
     name: "ICFRE-Arid Forest Research Institute",
@@ -389,7 +386,7 @@ const noticeTabs = [
                         <div className="dept-title">{d.dept}</div>
                       </div>
                       <div className="dept-count">
-                        <label>{d.count}</label> Applications
+                        <span id="deptcount">{d.count}</span> Applications
                       </div>
                     </Card>
                   </motion.div>
@@ -443,7 +440,7 @@ const noticeTabs = [
                       </div>
 
                       <div className="last-reg-date">
-                        <label>{job.date}</label>
+                        <span>{job.date}</span>
                       </div>
                     </Card>
                   </motion.div>

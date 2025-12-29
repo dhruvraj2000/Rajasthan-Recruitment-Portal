@@ -19,7 +19,7 @@ export default function Footer({ currentLang }){
           <p className='footer-img-header'>State Recruitment Portal</p>
         </div>
         <div>
-          <h4 className="footer-heading">State Recruitment Portal</h4>
+          <h1 className="footer-heading">State Recruitment Portal</h1>
           <ul>
 
             <li><a>{Language[currentLang].homePage}</a></li>
@@ -31,7 +31,7 @@ export default function Footer({ currentLang }){
         </div>
 
         <div>
-          <h4 className="footer-heading">Policies</h4>
+          <h1 className="footer-heading">Policies</h1>
           <ul>
             <li><a>{Language[currentLang].aadhaarPrivacyPolicy}</a></li>
             <li><a>{Language[currentLang].termsConditions}</a></li>
@@ -40,7 +40,7 @@ export default function Footer({ currentLang }){
         </div>
 
         <div>
-          <h4 className="footer-heading">Contact Us</h4>
+          <h1 className="footer-heading">Contact Us</h1>
           <ul>
             <li>{Language[currentLang].helpdesk}: 7340557555</li>
             <li>{Language[currentLang].Timing}: 9:30 AM – 6:00 PM</li>
