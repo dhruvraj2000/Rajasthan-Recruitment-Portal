@@ -15,26 +15,27 @@ import { useState } from "react";
 import Language from "./data/Language.jsx";
 
 
+
 export default function App() {
   const [currentLang, setCurrentLang] = useState("en");
 
   const [theme, setTheme] = useState("theme-blue");
 
   return (
-    <div className={`app-wrapper ${theme}`}>
+    <div id="main-content" tabIndex="-1"  className={`app-wrapper ${theme}`}>
       <BrowserRouter>
-        <ThemeSwitcher setTheme={setTheme} />
-        <ThemeNavigation  currentLang={currentLang} setCurrentLang={setCurrentLang}/>
-        <Header currentLang={currentLang} setCurrentLang={setCurrentLang} />
-        <Navbar currentLang={currentLang}/>
+      {/* <ThemeSwitcher setTheme={setTheme} /> */}
+        <ThemeNavigation  currentLang={currentLang} setCurrentLang={setCurrentLang} setTheme={setTheme}  />
+        <Header currentLang={currentLang} setCurrentLang={setCurrentLang}  setTheme={setTheme}/>
+        <Navbar currentLang={currentLang} setCurrentLang={setCurrentLang} />
         <main style={{ minHeight: "80vh" }}>
           <div className="main-content">
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/ssoid" element={<Ssoid />} />
+              <Route path="/" element={<HomePage  currentLang={currentLang} setCurrentLang={setCurrentLang}/>} />
+              <Route path="/ssoid" element={<Ssoid  currentLang={currentLang} setCurrentLang={setCurrentLang}/>} />
               <Route path="/Admitcard"element={<Admitcard currentLang={currentLang}  />}/>
-              <Route path="/results" element={<Results />} />
-              <Route path="/faq" element={<FAQs />} />
+              <Route path="/results" element={<Results  currentLang={currentLang} setCurrentLang={setCurrentLang}/>} />
+              <Route path="/faq" element={<FAQs  currentLang={currentLang} setCurrentLang={setCurrentLang}/>} />
             </Routes>
           </div>
         </main>

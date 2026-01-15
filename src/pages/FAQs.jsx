@@ -17,6 +17,9 @@ import pOtrPic1 from "../assets/Svg/pOtrPic1.png";
 import CET_ques2 from "../assets/Svg/CET_ques2.png";
 import FAQCollapse from "../components/FAQCollapse";
 import Language from "../data/Language";
+
+
+
 const Frequentlyquestions = ({ currentLang }) => {
   const [activeSection, setActiveSection] = useState("general");
   const [language, setLanguage] = useState("en");
@@ -254,54 +257,95 @@ const Frequentlyquestions = ({ currentLang }) => {
       title: Language[currentLang].otrHeading,
       desc: Language[currentLang].otrDesc,
       img: loginIcon,
+      button: {
+      show: true,
+      text: Language[currentLang].viewDetails,
+      type: "primary",
+    },
     },
     {
       id: "billing",
       title: Language[currentLang].examApplication,
       desc: Language[currentLang].examApplicationDesc,
       img: examResults,
+      button: {
+      show: true,
+      text: Language[currentLang].applyNow,
+      type: "primary",
+    },
     },
     {
       id: "paymentotr",
       title: Language[currentLang].examEdit,
       desc: Language[currentLang].examEditOtr,
       img: examIcon,
+      button: {
+      show: true,
+      text: Language[currentLang].applyNow,
+      type: "primary",
+    },
     },
     {
       id: "helpline",
       title: Language[currentLang].admitcard,
       desc: Language[currentLang].DownloadAdmitCard,
       img: identityCard,
+       button: {
+      show: true,
+      text: Language[currentLang].getCard,
+      type: "primary",
+    },
     },
     {
       id: "cet",
       title: Language[currentLang].objection,
       desc: Language[currentLang].submitObjection,
       img: userIcon,
+           button: {
+      show: true,
+      text: Language[currentLang].applyNow,
+      type: "primary",
+    },
     },
     {
       id: "result",
       title: Language[currentLang].resultHeading,
       desc: Language[currentLang].checkResult,
       img: medicalResult,
+           button: {
+      show: true,
+      text: Language[currentLang].viewDetails,
+      type: "primary",
+    },
     },
     {
       id: "scrutiny",
       title: Language[currentLang].scrutinyHeading,
       desc: Language[currentLang].scrutinyDetails,
       img: scrutiny,
+           button: {
+      show: true,
+      text: Language[currentLang].applyNow,
+      type: "primary",
+    },
     },
     {
       id: "helpline2",
       title: Language[currentLang].helplineHeading,
       desc: Language[currentLang].supportHelpline,
       img: helpline,
+           button: {
+      show: true,
+      text: Language[currentLang].viewDetails,
+      type: "primary",
+    },
     },
   ];
 
   return (
     <div className="faq-container">
       <div className="header-actions">
+
 
         <div className="headerbackground header-login-btn faq-top-header">
           <h1>{Language[currentLang].faqQues}</h1>

@@ -8,8 +8,8 @@ import Language from '../data/Language';
 
 
 
-const Header=({ currentLang, setCurrentLang }) =>{
- 
+const Header=({ currentLang, setCurrentLang,setTheme  }) =>{
+
 
   return (
     <header className="header-container">

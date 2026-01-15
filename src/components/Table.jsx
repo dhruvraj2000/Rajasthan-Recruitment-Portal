@@ -2,8 +2,10 @@ import React from 'react';
 import { Table, Space, } from 'antd';
 import Button from "../components/Button";
 import Language from '../data/Language';
-import { SkeletonButton, SkeletonLine } from './SkeletonComponent';
+import { SkeletonButton, SkeletonInput, SkeletonLine } from './SkeletonComponent';
 import { useEffect, useState } from 'react';
+import SkeletonAvatar from 'antd/es/skeleton/Avatar';
+import SkeletonImage from 'antd/es/skeleton/Image';
 
 
 const TableComponent = ({ searchText, currentLang }) => {
@@ -34,34 +36,34 @@ const handlePageChange = (page) => {
     ),
     dataIndex: 'admitcard',
     key: 'admitcard',
+render: (text, record) => {
+  if (loading) {
+    return (
+      <div style={{ display: "flex", gap: "10px" }}>
+        <SkeletonAvatar active size="small" />
+        <SkeletonInput active />
+      </div>
+    );
+  }
 
-    render: (text, record) => {
-      const before = text.split("(")[0];
-      const inside = text.match(/\(([^)]+)\)/)?.[1];
+  const before = text.split("(")[0];
+  const inside = text.match(/\(([^)]+)\)/)?.[1];
 
-      return (
-
-
- <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-
-      
-        {record.img && (
-          <img 
-            src={record.img} 
-            alt="logo"
-            style={{ width: "35px", height: "35px", objectFit: "contain" }}
-          />
-        )}
-
-
-        
-        <div>
-          {before}
-          {inside && <b> ({inside})</b>}
-        </div>
-        </div>
-   );
-    
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+      {record.img && (
+        <img
+          src={record.img}
+          alt="logo"
+          style={{ width: "35px", height: "35px" }}
+        />
+      )}
+      <div>
+        {before}
+        {inside && <b> ({inside})</b>}
+      </div>
+    </div>  
+  );
 }
   },
 
@@ -108,12 +110,14 @@ const handlePageChange = (page) => {
 ];
 
 const data = [
-  {
-    key: '1',
-    admitcard: 'LAB ATTENDANT DIRECT RECRUITMENT 2025 (RSSB)',
-    hasCenterMap: true,
-    img : "/1.png",
-  },
+
+  
+    {
+      key: '1',
+      admitcard: 'LAB ATTENDANT DIRECT RECRUITMENT 2025 (RSSB)',
+      hasCenterMap: true,
+      img : "/1.png",
+    },
   {
     key: '2',
     admitcard: 'EX SERVICEMAN (RPSC)',
@@ -291,18 +295,26 @@ const data = [
     key: '35',
     admitcard: 'Direct Recruitment of Para Medical cader Lab Technician and Assistant Radiographer -2020 (RSSB)',
     img : "/1.png",
+  
+    
   },
-
 
 
 ];
 
-  const filteredData = data.filter((item) =>
-    item.admitcard.toLowerCase().includes(searchText.toLowerCase())
-  );
+  const skeletonData = Array.from({ length: 5 }).map((_, i) => ({
+  key: `skeleton-${i}`,
+  admitcard: <SkeletonInput />,
+  img: <SkeletonImage />,
+}));
+  
 
-  return (
-     <Table
+const filteredData = data.filter((item) =>
+  item.admitcard.toLowerCase().includes(searchText.toLowerCase())
+);
+
+return (
+  <Table
   columns={columns}
   dataSource={filteredData}
   pagination={{
@@ -310,9 +322,9 @@ const data = [
     pageSize: 10,
     onChange: handlePageChange,
   }}
+    
   className="custom-table"
 />
-
   );
 };
 

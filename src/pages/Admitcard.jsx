@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Skeleton } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Table from "../components/Table";
 import PagePartition from "../components/Breadcrumb";
@@ -60,7 +60,7 @@ const Admitcard = ({ currentLang }) => {
 
             <Col span={24}>
 
-
+          
               <Table searchText={searchText} currentLang={currentLang} />
 
             </Col>
