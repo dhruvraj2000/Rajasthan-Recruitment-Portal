@@ -18,7 +18,7 @@ import Language from "./data/Language.jsx";
 export default function App() {
   const [currentLang, setCurrentLang] = useState("en");
 
-  const [theme, setTheme] = useState("theme-blue");s
+  const [theme, setTheme] = useState("theme-blue");
 
   return (
     <div className={`app-wrapper ${theme}`}>
