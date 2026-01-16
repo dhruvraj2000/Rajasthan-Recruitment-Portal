@@ -15,7 +15,7 @@ const Header=({ currentLang, setCurrentLang,setTheme  }) =>{
     <header className="header-container">
         <div className="header-inner">
           <div className="logo-title">
-            <img src={Logo} alt="logo" className="header-logo" />
+            <img src={Logo} alt="Rajasthan Logo" className="header-logo" />
           </div>
 
           <div className="header-actions">

@@ -7,7 +7,7 @@ const LeftMenu = ({ mode, currentLang = "en" }) => {
   const lang = Language[currentLang] || Language.en;
   const location = useLocation();
 
-  
+
   const pathKeyMap = {
     "/": "home",
     "/Ssoid": "sso",
@@ -27,13 +27,16 @@ const LeftMenu = ({ mode, currentLang = "en" }) => {
   ];
 
   return (
-    <Menu
+     <Menu
       mode={mode}
       items={items}
-      selectedKeys={[selectedKey]}
+      selectedKeys={selectedKey ? [selectedKey] : []}
       overflowedIndicator={null}
       disabledOverflow
       style={{ border: "none", fontSize: "16px" }}
+      itemRender={(item, dom) => (
+        <span aria-describedby={undefined}>{dom}</span>
+      )}
     />
   );
 };
